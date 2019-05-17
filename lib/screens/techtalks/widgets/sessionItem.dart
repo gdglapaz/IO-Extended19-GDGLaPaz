@@ -9,15 +9,17 @@ class SessionItem extends StatelessWidget {
   String titleTalk;
   List<String> nameTechnologies;
 
-  double sizeAvatar = 70.0;
+  double sizeAvatar = 35.0;
 
   SessionItem(this.id, this.sessionTime, this.pathImage, this.fullName, this.titleTalk, this.nameTechnologies);
 
   @override
   Widget build(BuildContext context) {
     final avatarWidget = Container(
+      margin: EdgeInsets.only(left: 10.0),
       child: CircleAvatar(
         backgroundImage: NetworkImage("https://www.websa100.com/wp-content/uploads/2016/05/foto-en-blanco-y-negro.png"),
+        radius: sizeAvatar,
       ),
     );
 
