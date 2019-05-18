@@ -191,14 +191,12 @@ class SpeakerDetail extends StatelessWidget {
     );
 
     final about_Text = Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Align(
-          alignment: Alignment.topLeft,
-          child: Icon(
+        Icon(
           Icons.info_outline,
           color: Colors.black54,
           ),
-        ),
         Flexible(
           child: Padding(
             padding: EdgeInsets.only(left: 20.0),
