@@ -155,8 +155,8 @@ class SpeakerDetail extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         border: new Border .all(
-          color: Colors.black54,
-          width: 2.0
+          color: Color(dividerColor),
+          width: 1.5
         ),
         borderRadius: BorderRadius.all(Radius.circular(8.0))
       ),
@@ -219,8 +219,8 @@ class SpeakerDetail extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         border: new Border .all(
-          color: Colors.black54,
-          width: 2.0
+          color: Color(dividerColor),
+          width: 1.5
         ),
         borderRadius: BorderRadius.all(Radius.circular(8.0))
       ),
@@ -246,6 +246,13 @@ class SpeakerDetail extends StatelessWidget {
       )
     );
 
+    final arrowAppbar = InkWell(
+      child: Icon(
+        Icons.arrow_back,
+        color: Colors.white, 
+      )
+    );
+
     return MaterialApp(
       home: Scaffold(
         body: Stack(
@@ -256,6 +263,11 @@ class SpeakerDetail extends StatelessWidget {
               height: double.infinity,
             ),
             speakersAppBar,
+            Positioned(
+              top: 35.0,
+              left: 20.0,
+              child: arrowAppbar,
+            ),
             Positioned(
               bottom: 310.0,
               left: 25.0,
