@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:io_extended_gdglapaz/util/palette_utils.dart';
 
-class SpeakerDetail extends StatelessWidget {
+class SpeakerDetailScreen extends StatelessWidget {
   @override
 
   String speakerPhoto = "https://www.websa100.com/wp-content/uploads/2016/05/foto-en-blanco-y-negro.png";
@@ -18,7 +18,7 @@ class SpeakerDetail extends StatelessWidget {
   final twitterLogo = "http://pngimg.com/uploads/twitter/twitter_PNG32.png";
   final twitterApp = "Twitter";
 
-  SpeakerDetail(this.speakerPhoto, this.speakerName, this.speakerDescription);
+  SpeakerDetailScreen(this.speakerPhoto, this.speakerName, this.speakerDescription);
 
   Widget build(BuildContext context) {
 
