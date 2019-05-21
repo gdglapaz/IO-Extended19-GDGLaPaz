@@ -11,8 +11,6 @@ class SessionModel {
   String date;
   String time;
   String type;
-  int idSpeaker;
-  String technologies;
 
   SessionModel({
     this.id,
@@ -20,9 +18,7 @@ class SessionModel {
     this.description,
     this.date,
     this.time,
-    this.type,
-    this.idSpeaker,
-    this.technologies,
+    this.type
   });
 
   factory SessionModel.fromJson(Map<String, dynamic> json) => new SessionModel(
@@ -31,9 +27,7 @@ class SessionModel {
     description: json["description"],
     date: json["date"],
     time: json["time"],
-    type: json["type"],
-    idSpeaker: json["id_speaker"],
-    technologies: json["technologies"],
+    type: json["type"]
   );
 
   Map<String, dynamic> toJson() => {
@@ -42,8 +36,6 @@ class SessionModel {
     "description": description,
     "date": date,
     "time": time,
-    "type": type,
-    "id_speaker": idSpeaker,
-    "technologies": technologies,
+    "type": type
   };
 }
