@@ -1,25 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:timeline_list/timeline.dart';
 import 'package:timeline_list/timeline_model.dart';
-import 'package:io_extended_gdglapaz/screens/techtalks/widgets/sessionItem.dart';
+import 'package:io_extended_gdglapaz/widgets/sessionItem.dart';
+import 'package:io_extended_gdglapaz/providers/db_provider.dart';
 
-class TechtalksScreen extends StatelessWidget {
+class TechtalksScreen extends StatefulWidget {
+  @override
+  _TechtalksScreenState createState() => _TechtalksScreenState();
+}
 
-  List<TimelineModel> items = [
-    TimelineModel(SessionItem(1, '09:00','','Sam Smith', 'Lets talk about Flutter', ['Flutter', 'Sketch', 'Adobe XD']),
-      position: TimelineItemPosition.random,
-      iconBackground: Colors.lightGreenAccent,
-    ),
-    TimelineModel(SessionItem(1, '09:45','','Podrick Stone', 'Lets talk about Flutter', ['Angular', 'Firebase']),
-      position: TimelineItemPosition.left,
-      iconBackground: Colors.lightGreenAccent,
-    )
-  ];
+class _TechtalksScreenState extends State<TechtalksScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Timeline(children: items, lineColor: Colors.black54, lineWidth: 1.0, position: TimelinePosition.Left),
+    return FutureBuilder<List<Map>>(
+        future: DBProvider.db.getTechTalks(),
+        builder: (BuildContext context, AsyncSnapshot<List<Map>> snapshot){
+          if(!snapshot.hasData){
+            return Center(child: CircularProgressIndicator(),);
+          }
+
+          final sessions = snapshot.data;
+
+          List<TimelineModel> itemsSessions = [];
+
+          for (Map<String, dynamic> data in sessions) {
+            itemsSessions.add(
+              TimelineModel(
+                SessionItem(data['id'], data['time'], data['pathImage'], data['firstName'] + ' ' +data['lastName'], data['title'], ['Flutter', 'Design', 'iOS']),
+                position: TimelineItemPosition.left,
+                iconBackground: Colors.lightGreenAccent,
+              )
+            );
+          }
+
+          return Container(
+            child: Timeline(children: itemsSessions, lineColor: Colors.black54, lineWidth: 1.0, position: TimelinePosition.Left),
+          );
+        }
     );
   }
 }
+

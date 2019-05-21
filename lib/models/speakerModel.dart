@@ -1,0 +1,38 @@
+
+class SpeakerModel {
+  final int id;
+  final String pathImage;
+  final String firstName;
+  final String lastName;
+  final String jobTitle;
+  final String countyName;
+  final String twitterUSer;
+  final String linkedinPath;
+  final String about;
+
+  SpeakerModel({this.id, this.pathImage, this.firstName, this.lastName, this.jobTitle, this.countyName, this.twitterUSer, this.linkedinPath, this.about});
+
+  factory SpeakerModel.fromJson(Map<String, dynamic> json) => new SpeakerModel(
+    id: json["id"],
+    pathImage: json["pathImage"],
+    firstName: json["firstName"],
+    lastName: json["lastName"],
+    jobTitle: json["jobTitle"],
+    countyName: json["countyName"],
+    twitterUSer: json["twitterUSer"],
+    linkedinPath: json["linkedinPath"],
+    about: json["about"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "pathImage": pathImage,
+    "firstName": firstName,
+    "lastName": lastName,
+    "jobTitle": jobTitle,
+    "countyName": countyName,
+    "twitterUSer": twitterUSer,
+    "linkedinPath": linkedinPath,
+    "about": about,
+  };
+}

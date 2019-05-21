@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:io_extended_gdglapaz/screens/sessionDetail/sessionDetail.dart';
 
 class SessionItem extends StatelessWidget {
 
@@ -18,7 +19,7 @@ class SessionItem extends StatelessWidget {
     final avatarWidget = Container(
       margin: EdgeInsets.only(left: 10.0),
       child: CircleAvatar(
-        backgroundImage: NetworkImage("https://www.websa100.com/wp-content/uploads/2016/05/foto-en-blanco-y-negro.png"),
+        backgroundImage: NetworkImage("${pathImage}"),
         radius: sizeAvatar,
       ),
     );
@@ -87,29 +88,43 @@ class SessionItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(18.0),
             border: Border.all(color: Colors.black54, width: 1.0, style: BorderStyle.solid)
         ),
-        child: Row(
-          children: <Widget>[
-            avatarWidget,
-            Container(
-              padding: EdgeInsets.only(left: 10.0, top: 5.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  fullNameWidget,
-                  titleTalkWidget,
-                  Container(
-                    width: 230.0,
-                    height: 47.0,
-                    child: listChipWidget,
-                  ),
-                ],
-              ),
-            )
-          ],
+        child: InkWell(
+          borderRadius: BorderRadius.circular(19.0),
+          onTap: (){
+
+            Navigator.push(
+            context,
+              MaterialPageRoute(builder: (context) => Sessiondetail()),
+            );
+          },
+          child: Row(
+            children: <Widget>[
+              avatarWidget,
+              Container(
+                padding: EdgeInsets.only(left: 10.0, top: 5.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    fullNameWidget,
+                    titleTalkWidget,
+                    Container(
+                      width: 230.0,
+                      height: 47.0,
+                      child: listChipWidget,
+
+                    ),
+                  ],
+                ),
+
+
+              )
+            ],
+          ),
         )
     );
 
     return Container(
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
