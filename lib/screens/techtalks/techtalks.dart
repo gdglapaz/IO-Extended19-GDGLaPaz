@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:timeline_list/timeline.dart';
 import 'package:timeline_list/timeline_model.dart';
-import 'package:io_extended_gdglapaz/screens/techtalks/widgets/sessionItem.dart';
+import 'package:io_extended_gdglapaz/widgets/sessionItem.dart';
 import 'package:io_extended_gdglapaz/providers/db_provider.dart';
 
 class TechtalksScreen extends StatefulWidget {
@@ -13,8 +13,6 @@ class _TechtalksScreenState extends State<TechtalksScreen> {
 
   @override
   Widget build(BuildContext context) {
-    DBProvider.db.getTechTalks();
-
     return FutureBuilder<List<Map>>(
         future: DBProvider.db.getTechTalks(),
         builder: (BuildContext context, AsyncSnapshot<List<Map>> snapshot){

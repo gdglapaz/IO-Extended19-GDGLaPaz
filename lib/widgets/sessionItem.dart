@@ -19,7 +19,7 @@ class SessionItem extends StatelessWidget {
     final avatarWidget = Container(
       margin: EdgeInsets.only(left: 10.0),
       child: CircleAvatar(
-        backgroundImage: NetworkImage("https://www.websa100.com/wp-content/uploads/2016/05/foto-en-blanco-y-negro.png"),
+        backgroundImage: NetworkImage("${pathImage}"),
         radius: sizeAvatar,
       ),
     );
