@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:io_extended_gdglapaz/util/palette_utils.dart';
+import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 
 class SpeakerDetailScreen extends StatelessWidget {
   @override
@@ -48,7 +48,7 @@ class SpeakerDetailScreen extends StatelessWidget {
             );
 
     final speakersAppBar = Container(
-      color: Color(primaryColor),
+      color: Theme.of(context).primaryColor,
       height: 250.0,
       width: double.infinity,
       child: Center(
@@ -155,7 +155,7 @@ class SpeakerDetailScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         border: new Border .all(
-          color: Color(dividerColor),
+          color: Theme.of(context).dividerColor,
           width: 1.5
         ),
         borderRadius: BorderRadius.all(Radius.circular(8.0))
@@ -168,7 +168,7 @@ class SpeakerDetailScreen extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text("Información",
             style: TextStyle(
-             color: Color(primaryColor),
+             color: Theme.of(context).primaryColor,
              fontSize: 20.0,
              fontWeight: FontWeight.bold
            ),),
@@ -219,7 +219,7 @@ class SpeakerDetailScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         border: new Border .all(
-          color: Color(dividerColor),
+          color: Theme.of(context).dividerColor,
           width: 1.5
         ),
         borderRadius: BorderRadius.all(Radius.circular(8.0))
@@ -232,7 +232,7 @@ class SpeakerDetailScreen extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text("About",
             style: TextStyle(
-             color: Color(primaryColor),
+             color: Theme.of(context).primaryColor,
              fontSize: 20.0,
              fontWeight: FontWeight.bold
            ),),

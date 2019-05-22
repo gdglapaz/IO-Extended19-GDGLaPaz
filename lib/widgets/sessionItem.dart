@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:io_extended_gdglapaz/screens/sessionDetail/sessionDetail.dart';
+import 'package:io_extended_gdglapaz/util/ui_utils.dart';
+import 'chipList.dart';
 
 class SessionItem extends StatelessWidget {
-
   int id;
   String sessionTime;
   String pathImage;
@@ -10,14 +11,14 @@ class SessionItem extends StatelessWidget {
   String titleTalk;
   List<String> nameTechnologies;
 
-  double sizeAvatar = 35.0;
+  double sizeAvatar = 28.0;
 
   SessionItem(this.id, this.sessionTime, this.pathImage, this.fullName, this.titleTalk, this.nameTechnologies);
 
   @override
   Widget build(BuildContext context) {
     final avatarWidget = Container(
-      margin: EdgeInsets.only(left: 10.0),
+      margin: EdgeInsets.only(left: margin_s),
       child: CircleAvatar(
         backgroundImage: NetworkImage("${pathImage}"),
         radius: sizeAvatar,
@@ -30,7 +31,7 @@ class SessionItem extends StatelessWidget {
       style: TextStyle(
         fontWeight: FontWeight.bold,
         color: Colors.black54,
-        fontSize: 20.0,
+        fontSize: letter_m,
       ),
     );
 
@@ -39,50 +40,27 @@ class SessionItem extends StatelessWidget {
           titleTalk,
           textDirection: TextDirection.ltr,
           style: TextStyle(
-              fontSize: 22.0,
+              fontSize: letter_md,
               color: Colors.black54
           ),
         )
     );
 
-    final listChipWidget = ListView.builder(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.all(8.0),
-        itemCount: nameTechnologies.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            child: Transform(
-                transform: new Matrix4.identity()..scale(0.9),
-                child: Chip(
-                  label: Text(
-                    '${nameTechnologies[index]}',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold
-                    ),
-                  ),
-                  backgroundColor: Colors.blue,
-                )
-            ),
-          );
-        }
-    );
-
     final timeWidget = Container(
-        margin: EdgeInsets.only(left: 5.0, top: 5.0),
+        margin: EdgeInsets.only(left: margin_xs, top: margin_xs),
         child: Text(
           sessionTime,
           textDirection: TextDirection.ltr,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.deepPurple,
-            fontSize: 20.0,
+            fontSize: letter_m,
           ),
         )
     );
 
     final cardSessionWidget = Container(
-        height: 104.0,
+        height: 86.0,
         margin: EdgeInsets.only(top: 1.0, bottom: 5.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18.0),
@@ -99,24 +77,27 @@ class SessionItem extends StatelessWidget {
           },
           child: Row(
             children: <Widget>[
-              avatarWidget,
-              Container(
-                padding: EdgeInsets.only(left: 10.0, top: 5.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    fullNameWidget,
-                    titleTalkWidget,
-                    Container(
-                      width: 230.0,
-                      height: 47.0,
-                      child: listChipWidget,
-
-                    ),
-                  ],
+              Expanded(
+                flex: 2,
+                child: avatarWidget,
+              ),
+              Expanded(
+                flex: 8,
+                child: Container(
+                  padding: EdgeInsets.only(left: margin_s, top: 5.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      fullNameWidget,
+                      titleTalkWidget,
+                      Container(
+                        width: 230.0,
+                        height: 35.0,
+                        child: ChipList(id),
+                      ),
+                    ],
+                  ),
                 ),
-
-
               )
             ],
           ),

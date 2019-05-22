@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:io_extended_gdglapaz/util/palette_utils.dart';
+import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 
 class Topdetail extends StatelessWidget{
   String imagepath,title, date, hour;
@@ -29,7 +29,7 @@ class Topdetail extends StatelessWidget{
       padding: EdgeInsets.all(32.0),
       height: 180.0,
       width: 450.0,
-      color: Color(primaryColor),
+      color: Theme.of(context).primaryColor,
       child: Column(
         children: <Widget>[
           TxtTitle,
