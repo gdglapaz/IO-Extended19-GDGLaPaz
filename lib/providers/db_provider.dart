@@ -8,6 +8,8 @@ import 'package:io_extended_gdglapaz/models/speakerModel.dart';
 export 'package:io_extended_gdglapaz/models/speakerModel.dart';
 import 'package:io_extended_gdglapaz/models/sessionModel.dart';
 export 'package:io_extended_gdglapaz/models/sessionModel.dart';
+import 'package:io_extended_gdglapaz/models/categoryModel.dart';
+export 'package:io_extended_gdglapaz/models/categoryModel.dart';
 
 
 class DBProvider {
@@ -107,7 +109,6 @@ class DBProvider {
     List<Map> list = response.isNotEmpty
         ? response
         :[];
-    print(list);
     return list;
   }
 
@@ -125,7 +126,24 @@ class DBProvider {
     List<Map> list = response.isNotEmpty
         ? response
         :[];
-    print(list);
+    return list;
+  }
+
+  //Get list of categories
+  Future<List<CategoryModel>> getCategoriesBySession(int idSession) async {
+    final db = await database;
+    final response = await db.rawQuery(
+      '﻿SELECT Category.id_category, Category.nameTechnology, Category.color'
+      ' FROM Session_Category'
+      ' INNER JOIN Category ON Category.id_category = Session_Category.id_category'
+      ' WHERE Session_Category.id_session = ${idSession}'
+    );
+
+    print(response);
+    List<CategoryModel> list = response.isNotEmpty
+        ? response.map((s) => CategoryModel.fromJson(s)).toList()
+        :[];
+
     return list;
   }
 }
