@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:io_extended_gdglapaz/screens/codelabs/codelabs.dart';
-import 'package:io_extended_gdglapaz/util/palette_utils.dart';
+import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 import 'package:io_extended_gdglapaz/screens/techtalks/techtalks.dart';
 
 class HomeScreen extends StatefulWidget {

@@ -27,7 +27,7 @@ class _CodelabsScreenState extends State<CodelabsScreen> {
           for (Map<String, dynamic> data in sessions) {
             itemsSessions.add(
                 TimelineModel(
-                  SessionItem(data['id'], data['time'], data['pathImage'], data['firstName'] + ' ' +data['lastName'], data['title'], ['Flutter', 'Design', 'iOS']),
+                  SessionItem(data['id_session'], data['time'], data['pathImage'], data['firstName'] + ' ' +data['lastName'], data['title'], ['Flutter', 'Design', 'iOS']),
                   position: TimelineItemPosition.left,
                   iconBackground: Colors.lightGreenAccent,
                 )
