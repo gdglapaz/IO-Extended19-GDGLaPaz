@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:io_extended_gdglapaz/util/ui_utils.dart';
+import 'package:io_extended_gdglapaz/models/speakerModel.dart';
+import 'package:io_extended_gdglapaz/providers/db_provider.dart';
+
 
 class SpeakerDetailScreen extends StatelessWidget {
   @override
@@ -7,71 +10,77 @@ class SpeakerDetailScreen extends StatelessWidget {
   String speakerPhoto = "https://www.websa100.com/wp-content/uploads/2016/05/foto-en-blanco-y-negro.png";
   String speakerName = "Full Name";
   String speakerDescription = "Google Expert in Angular";
-
   String speakerLocation = "La Paz, Bolivia";
-
   String speakerAbout = """Lorem ipsum dolor sit amet consectetur adipiscing, elit felis eget suspendisse pharetra purus, lobortis porta senectus erat auctor. Ridiculus nostra tincidunt proin eget taciti vitae id dignissim nascetur tristique, eros viverra mauris odio quis luctus sodales hac hendrerit sem litora, aliquet facilisis felis in vivamus justo netus ultrices urna.""";
 
-  final linkedinLogo = "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png";
-  final linkedinApp = "Linkedin";
+  String linkedinLogo = "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png";
+  String linkedinApp = "Linkedin";
 
-  final twitterLogo = "http://pngimg.com/uploads/twitter/twitter_PNG32.png";
-  final twitterApp = "Twitter";
+  String twitterLogo = "http://pngimg.com/uploads/twitter/twitter_PNG32.png";
+  String twitterApp = "Twitter";
 
   SpeakerDetailScreen(this.speakerPhoto, this.speakerName, this.speakerDescription);
 
   Widget build(BuildContext context) {
 
-    final speakerPhoto_Container = Container(
+    Widget speakerPhoto_Container (SpeakerModel speakerModel){
+      return Container(
               width: 100.0,
               height: 100.0,
               margin: EdgeInsets.all(2.0),
               child: CircleAvatar(
-                backgroundImage: NetworkImage(speakerPhoto),
+                backgroundImage: NetworkImage(speakerModel.pathImage),
               ),
             );
 
-    final speakerName_Text =  Text("Full Name",
+    }
+
+    Widget speakerName_Text (SpeakerModel speakerModel){
+      return Text(speakerModel.firstName + " " + speakerModel.lastName,
               style: TextStyle(
               color: Colors.white,
               fontSize: 20.0,
               fontWeight: FontWeight.bold
               ),
             );
+    } 
 
-    final speakerDescription_Text = 
-            Text("Google Developer Expert in Angular",
+    Widget speakerDescription_Text (SpeakerModel speakerModel){
+      return Text(speakerModel.jobTitle,
               style: TextStyle(
               color: Colors.white,
               fontSize: 16.0,
               ),
             );
+    } 
 
-    final speakersAppBar = Container(
-      color: Theme.of(context).primaryColor,
-      height: 250.0,
-      width: double.infinity,
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(bottom: 5.0),
-              child: speakerPhoto_Container,
-            ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 5.0),
-              child: speakerName_Text,
-            ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 5.0),
-              child: speakerDescription_Text,
-            )
-          ],
+    Widget speakersAppBar (SpeakerModel speakerModel) {
+        return Container(
+        color: Theme.of(context).primaryColor,
+        height: 250.0,
+        width: double.infinity,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(bottom: 5.0),
+                child: speakerPhoto_Container(speakerModel),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 5.0),
+                child: speakerName_Text(speakerModel),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 5.0),
+                child: speakerDescription_Text(speakerModel),
+              )
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    } 
 
     final location_Text = Row(
       children: <Widget>[
@@ -247,40 +256,56 @@ class SpeakerDetailScreen extends StatelessWidget {
     );
 
     final arrowAppbar = InkWell(
+      onTap: (){
+        Navigator.pop(context);
+      },
       child: Icon(
         Icons.arrow_back,
         color: Colors.white, 
       )
     );
 
-    return MaterialApp(
-      home: Scaffold(
-        body: Stack(
-          children: <Widget>[
-            Container(
-              color: Colors.transparent,
-              width: double.infinity,
-              height: double.infinity,
-            ),
-            speakersAppBar,
-            Positioned(
-              top: 35.0,
-              left: 20.0,
-              child: arrowAppbar,
-            ),
-            Positioned(
-              bottom: 310.0,
-              left: 25.0,
-              child: informationContainer,
-            ),
-            Positioned(
-              bottom: 20.0,
-              left: 25.0,
-              child: aboutContainer,
-            )
-          ],
+  return FutureBuilder<SpeakerModel>(
+    future: DBProvider.db.getSpeakerId(1),
+    builder: (BuildContext context, AsyncSnapshot<SpeakerModel> snapshot){
+
+      if(!snapshot.hasData){
+        return Center(child: CircularProgressIndicator());
+      }
+
+      SpeakerModel speaker = snapshot.data;
+
+        return MaterialApp(
+        home: Scaffold(
+          body: Stack(
+            children: <Widget>[
+             Container(
+               color: Colors.transparent,
+               width: double.infinity,
+                height: double.infinity,
+             ),
+              speakersAppBar(speaker),
+              Positioned(
+               top: 35.0,
+               left: 20.0,
+               child: arrowAppbar,
+              ),
+              Positioned(
+               bottom: 310.0,
+               left: 25.0,
+               child: informationContainer,
+              ),
+              Positioned(
+               bottom: 20.0,
+               left: 25.0,
+                child: aboutContainer,
+              )
+           ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
+
+
