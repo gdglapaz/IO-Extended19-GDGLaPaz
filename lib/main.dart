@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:io_extended_gdglapaz/screens/aboutUs/aboutus.dart';
 import 'package:io_extended_gdglapaz/screens/home/home.dart';
 import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
       title: 'I/O Extended',
       initialRoute: 'home',
       routes: {
-        'home': (BuildContext context) => HomeScreen()
+        'home': (BuildContext context) => HomeScreen(),
+        'about-us': (BuildContext context) => AboutUsScreen()
       },
       theme: ThemeData(
         primaryColor: Color(0xFF8500CC),

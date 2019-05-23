@@ -10,7 +10,7 @@ class TechtalksScreen extends StatefulWidget {
 }
 
 class _TechtalksScreenState extends State<TechtalksScreen> {
-
+  
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Map>>(

@@ -16,7 +16,7 @@ class ChipList extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot<List<CategoryModel>> snapshot){
 
         if(!snapshot.hasData){
-          return Center(child: CircularProgressIndicator(),);
+          return Container();
         }
 
         final categories = snapshot.data;

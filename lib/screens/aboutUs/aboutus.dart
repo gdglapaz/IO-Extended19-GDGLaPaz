@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:io_extended_gdglapaz/widgets/menu.dart';
 class AboutUsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp (
-      title: "About Us",
-      home: Scaffold(
+    return Scaffold(
+          drawer: Menu(),
           appBar: AppBar(
-            backgroundColor: Colors.purpleAccent[700],
-            leading: Icon(Icons.arrow_back, color: Colors.white,),
             title: Text('About Us'),
           ),
           body: Center(//container
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-
                   SizedBox(
                     width: 200.0,
                     child:  Image.network ('https://secure.meetupstatic.com/photos/event/d/9/5/1/600_481435633.jpeg'),
@@ -33,10 +30,8 @@ class AboutUsScreen extends StatelessWidget {
                         textAlign: TextAlign.justify,),
                   ),
                  ],
-
               )
           )
-      ),
-    );
+      );
   }
 }
