@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:io_extended_gdglapaz/screens/codelabs/codelabs.dart';
 import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 import 'package:io_extended_gdglapaz/screens/techtalks/techtalks.dart';
+import 'package:io_extended_gdglapaz/widgets/menu.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -15,10 +16,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Menu(),
       appBar: AppBar(
-        leading: Icon(
-          Icons.menu
-        ),
         title: Text("I/O Extended"),
         actions: <Widget>[
           Container(
