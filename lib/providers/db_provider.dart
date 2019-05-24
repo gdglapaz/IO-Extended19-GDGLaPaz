@@ -61,7 +61,7 @@ class DBProvider {
   //Get Speakers
   Future<SpeakerModel> getSpeakerId( int id ) async {
     final db = await database;
-    final response = await db.query('Speaker', where: 'id = ?', whereArgs: [id]);
+    final response = await db.query('Speaker', where: 'id_speaker = ?', whereArgs: [id]);
 
     return response.isNotEmpty ? SpeakerModel.fromJson( response.first ) : null;
   }

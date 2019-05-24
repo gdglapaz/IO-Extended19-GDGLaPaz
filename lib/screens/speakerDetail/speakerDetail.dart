@@ -19,8 +19,6 @@ class SpeakerDetailScreen extends StatelessWidget {
   String twitterLogo = "http://pngimg.com/uploads/twitter/twitter_PNG32.png";
   String twitterApp = "Twitter";
 
-  SpeakerDetailScreen(this.speakerPhoto, this.speakerName, this.speakerDescription);
-
   Widget build(BuildContext context) {
 
     Widget speakerPhoto_Container (SpeakerModel speakerModel){
