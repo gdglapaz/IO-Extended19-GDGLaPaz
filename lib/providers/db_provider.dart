@@ -95,6 +95,25 @@ class DBProvider {
     return list;
   }
 
+  Future<List<Map>> getSessionDetailById(int idSession) async {
+    final db = await database;
+    final response = await db.rawQuery(
+        'SELECT *'
+            ' FROM Session'
+            ' LEFT JOIN Session_Speaker on Session_Speaker.id_session = Session.id_session'
+            ' LEFT JOIN Speaker on Speaker.id_speaker = Session_Speaker.id_speaker'
+            ' WHERE Session.id_session = ${idSession}'
+            ' LIMIT 1;'
+    );
+
+    List<Map> sessionDetail = response.isNotEmpty
+        ? response
+        :[];
+
+    print(sessionDetail);
+    return sessionDetail;
+  }
+
   Future<List<Map>> getTechTalks() async {
     final db = await database;
     final response = await db.rawQuery(

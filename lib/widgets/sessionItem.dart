@@ -60,16 +60,14 @@ class SessionItem extends StatelessWidget {
     );
 
     final cardSessionWidget = Container(
-        height: 86.0,
+        height: 82.0,
         margin: EdgeInsets.only(top: 1.0, bottom: 5.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18.0),
             border: Border.all(color: Colors.black54, width: 1.0, style: BorderStyle.solid)
         ),
         child: InkWell(
-          borderRadius: BorderRadius.circular(19.0),
           onTap: (){
-
             Navigator.push(
             context,
               MaterialPageRoute(builder: (context) => Sessiondetail()),
@@ -77,12 +75,8 @@ class SessionItem extends StatelessWidget {
           },
           child: Row(
             children: <Widget>[
+              avatarWidget,
               Expanded(
-                flex: 2,
-                child: avatarWidget,
-              ),
-              Expanded(
-                flex: 8,
                 child: Container(
                   padding: EdgeInsets.only(left: margin_s, top: 5.0),
                   child: Column(
@@ -90,9 +84,7 @@ class SessionItem extends StatelessWidget {
                     children: <Widget>[
                       fullNameWidget,
                       titleTalkWidget,
-                      Container(
-                        width: 230.0,
-                        height: 35.0,
+                      Expanded(
                         child: ChipList(id),
                       ),
                     ],
@@ -105,7 +97,6 @@ class SessionItem extends StatelessWidget {
     );
 
     return Container(
-
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
