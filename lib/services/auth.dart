@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:io_extended_gdglapaz/shared_preferences/user_preferences.dart';
 
 class AuthService {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  UserPreferences prefs = UserPreferences();
 
   Future<FirebaseUser> handleSignIn() async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
@@ -16,20 +17,13 @@ class AuthService {
     );
 
     final FirebaseUser user = await _auth.signInWithCredential(credential);
-    updateUser(user);
+    prefs.updateUser(user);
     return user;
-  }
-
-  void updateUser(FirebaseUser user)  async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('uid', user.uid);
-    prefs.setString('email', user.email);
-    prefs.setString('photoUrl', user.photoUrl);
-    prefs.setString('displayName', user.displayName);
   }
 
   void signOut(){
     _auth.signOut();
+    prefs.removeUser();
   }
 }
 
