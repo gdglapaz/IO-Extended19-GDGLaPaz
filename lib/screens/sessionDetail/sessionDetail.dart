@@ -6,6 +6,7 @@ import 'package:io_extended_gdglapaz/screens/speakerDetail/speakerDetail.dart';
 import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 import 'package:io_extended_gdglapaz/widgets/chipList.dart';
 import 'package:io_extended_gdglapaz/providers/db_provider.dart';
+import 'package:io_extended_gdglapaz/widgets/speakerItem.dart';
 
 class Sessiondetail extends StatelessWidget{
 
@@ -81,16 +82,15 @@ class Sessiondetail extends StatelessWidget{
           )
         ],
       );
-    } 
-    
-    Widget speakerContainer (List<Map<dynamic, dynamic>> sessionDetail, int id){
+    }
+
+    Widget speakerContainer (List<Map<dynamic, dynamic>> sessionDetail){
       return InkWell(
           onTap: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => SpeakerDetailScreen(sessionId)));
           },
           child: Container(
             height: 120.0,
-            width: 800.0,
             child: Padding(
               padding: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
               child: Column(
@@ -102,55 +102,16 @@ class Sessiondetail extends StatelessWidget{
                     TextStyle(
                       color: Theme.of(context).primaryColor,
                       fontSize: letter_md,
-                      fontWeight: FontWeight.bold 
-                    )    
+                      fontWeight: FontWeight.bold
+                    )
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 12.0),
-                   child: Row(
-                   children: <Widget>[
-                     Container(
-                      width: 60.0,
-                      height: 60.0,
-                      margin: EdgeInsets.only(top: 2.0, left: 2.0, right: 10.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black54, width: 2.0),
-                        borderRadius: BorderRadius.circular(100.0)
-                      ),
-                      child: CircleAvatar(
-                          backgroundImage: NetworkImage(sessionDetail[id]['pathImage']),
-                             ),
-                     ),
-                     Column(
-                       crossAxisAlignment: CrossAxisAlignment.start,
-                       children: <Widget>[
-                         Text(
-                           sessionDetail[id]['firstName'] + " " + sessionDetail[id]['lastName'],
-                           style: TextStyle(
-                             color: Colors.black54,
-                             fontWeight: FontWeight.bold,
-                             fontSize: letter_xm
-                           )
-                         ),
-                         Text(
-                           sessionDetail[id]['jobTitle'],
-                           style: TextStyle(
-                             color: Colors.black54,
-                             fontWeight: FontWeight.w300,
-                             fontSize: letter_m
-                           )
-                         ),
-                       ],
-                     )        
-                    ],
-                  ),
-                )
+                SpeakerItem(sessionDetail[0]["id_speaker"],sessionDetail[0]["pathImage"],sessionDetail[0]["firstName"],sessionDetail[0]["lastName"],sessionDetail[0]["jobTitle"])
               ],
             ),
             )
           )
         );
-    } 
+    }
 
     Widget sessionDescription (List<Map<dynamic, dynamic>> sessionDetail, int id){
       return Container(
@@ -202,7 +163,7 @@ class Sessiondetail extends StatelessWidget{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           sessionDetailAppbar(sessionDetail, id),
-          speakerContainer(sessionDetail, id),
+          speakerContainer(sessionDetail),
           sessionDescription(sessionDetail, id),
         ],
       );
