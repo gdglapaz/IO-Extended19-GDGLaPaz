@@ -1,6 +1,6 @@
 
 class SpeakerModel {
-  final int id;
+  final int id_speaker;
   final String pathImage;
   final String firstName;
   final String lastName;
@@ -10,10 +10,10 @@ class SpeakerModel {
   final String linkedinPath;
   final String about;
 
-  SpeakerModel({this.id, this.pathImage, this.firstName, this.lastName, this.jobTitle, this.countyName, this.twitterUSer, this.linkedinPath, this.about});
+  SpeakerModel({this.id_speaker, this.pathImage, this.firstName, this.lastName, this.jobTitle, this.countyName, this.twitterUSer, this.linkedinPath, this.about});
 
   factory SpeakerModel.fromJson(Map<String, dynamic> json) => new SpeakerModel(
-    id: json["id"],
+    id_speaker: json["id_speaker"],
     pathImage: json["pathImage"],
     firstName: json["firstName"],
     lastName: json["lastName"],
@@ -25,7 +25,7 @@ class SpeakerModel {
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
+    "id_speaker": id_speaker,
     "pathImage": pathImage,
     "firstName": firstName,
     "lastName": lastName,
