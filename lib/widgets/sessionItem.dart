@@ -70,7 +70,7 @@ class SessionItem extends StatelessWidget {
           onTap: (){
             Navigator.push(
             context,
-              MaterialPageRoute(builder: (context) => Sessiondetail()),
+              MaterialPageRoute(builder: (context) => Sessiondetail(id)),
             );
           },
           child: Row(

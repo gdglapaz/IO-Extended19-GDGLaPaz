@@ -7,12 +7,12 @@ import 'package:io_extended_gdglapaz/providers/db_provider.dart';
 class SpeakerDetailScreen extends StatelessWidget {
   @override
 
-  // int speakerId;
+   int speakerId;
 
   String linkedinLogo = "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png";
   String twitterLogo = "http://pngimg.com/uploads/twitter/twitter_PNG32.png";
 
-  // SpeakerDetailScreen(this.speakerId);
+  SpeakerDetailScreen(this.speakerId);
 
   Widget build(BuildContext context) {
 

@@ -11,10 +11,10 @@ class Sessiondetail extends StatelessWidget{
 
   int sessionId;
 
+  Sessiondetail(this.sessionId);
+
   @override
   Widget build(BuildContext context) {
-
-    sessionId = 2;
 
     Widget sessionDetailAppbar(List<Map<dynamic, dynamic>> sessionDetail, int id){
         return Stack(
@@ -86,7 +86,7 @@ class Sessiondetail extends StatelessWidget{
     Widget speakerContainer (List<Map<dynamic, dynamic>> sessionDetail, int id){
       return InkWell(
           onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => SpeakerDetailScreen()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SpeakerDetailScreen(sessionId)));
           },
           child: Container(
             height: 120.0,
