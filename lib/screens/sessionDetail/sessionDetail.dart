@@ -5,176 +5,184 @@ import 'package:io_extended_gdglapaz/screens/sessionDetail/widgets/Contentdetail
 import 'package:io_extended_gdglapaz/screens/speakerDetail/speakerDetail.dart';
 import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 import 'package:io_extended_gdglapaz/widgets/chipList.dart';
+import 'package:io_extended_gdglapaz/providers/db_provider.dart';
 
 class Sessiondetail extends StatelessWidget{
 
-  final exampleText = "Lorem ipsum dolor sit amet consectetur adipiscing, elit felis eget suspendisse pharetra purus, lobortis porta senectus erat auctor. Ridiculus nostra tincidunt proin eget taciti vitae id dignissim nascetur tristique, eros viverra mauris odio quis luctus sodales hac hendrerit sem litora, aliquet facilisis felis in vivamus justo netus ultrices urna.";
+  int sessionId;
 
   @override
   Widget build(BuildContext context) {
-    
 
-    final sessionDetailAppbar = Stack(
-      children: <Widget>[
-        Container(
-          height: 200.0,
-          width: double.infinity,
-          color: Theme.of(context).primaryColor,
-        ),
-        Positioned(
-          top: 80.0,
-          left: 100.0,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(bottom: 5.0),
-                child: Text(
-                  "Title Tech Talk",
-                   style: TextStyle(
-                     color: Colors.white,
-                     fontSize: letter_x,
-                     fontWeight: FontWeight.bold
-                   ),
-                )
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 5.0),
-                child: Text(
-                  "Sábado, 1ro de Junio",
-                   style: TextStyle(
-                     color: Colors.white,
-                     fontSize: letter_m,
-                     fontWeight: FontWeight.w300
-                   ),
-                )
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 5.0),
-                child: Text(
-                  "09:00 AM",
-                   style: TextStyle(
-                     color: Colors.white,
-                     fontSize: letter_md,
-                     fontWeight: FontWeight.w600
-                   ),
-                )
-              ),
-            ],
-          ),
-        ),
-        Positioned(
-          top: 40.0,
-          left: 20.0,
-          child: InkWell(
-                onTap: (){
-                  Navigator.pop(context);
-                },
-                child: Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,            
-                ),
-          )
-        )
-      ],
-    );
-    
-    final speakerContainer = InkWell(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => SpeakerDetailScreen()));
-      },
-      child: Container(
-        height: 120.0,
-        width: 800.0,
-        child: Padding(
-          padding: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
-          child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              "Speaker",
-               style:
-                TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: letter_md,
-                  fontWeight: FontWeight.bold 
-                )    
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 12.0),
-               child: Row(
-               children: <Widget>[
-                 Container(
-                  width: 60.0,
-                  height: 60.0,
-                  margin: EdgeInsets.only(top: 2.0, left: 2.0, right: 10.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black54, width: 2.0),
-                    borderRadius: BorderRadius.circular(100.0)
-                  ),
-                  child: CircleAvatar(
-                      backgroundImage: NetworkImage("https://www.websa100.com/wp-content/uploads/2016/05/foto-en-blanco-y-negro.png"),
-                         ),
-                 ),
-                 Column(
-                   crossAxisAlignment: CrossAxisAlignment.start,
-                   children: <Widget>[
-                     Text(
-                       "Full Name",
-                       style: TextStyle(
-                         color: Colors.black54,
-                         fontWeight: FontWeight.bold,
-                         fontSize: letter_xm
-                       )
-                     ),
-                     Text(
-                       "Google Developer Expert in Angular",
-                       style: TextStyle(
-                         color: Colors.black54,
-                         fontWeight: FontWeight.w300,
-                         fontSize: letter_m
-                       )
-                     ),
-                   ],
-                 )        
-                ],
-              ),
-            )
-          ],
-        ),
-        )
-      )
-    );
+    sessionId = 2;
 
-    final sessionDescription = Container(
-      padding: EdgeInsets.all(10.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    Widget sessionDetailAppbar(List<Map<dynamic, dynamic>> sessionDetail, int id){
+        return Stack(
         children: <Widget>[
-           Text(
-          "Descripción",
-           style:
-           TextStyle(
-             color: Theme.of(context).primaryColor,
-             fontSize: letter_md,
-             fontWeight: FontWeight.bold 
-           )    
-          ),
-          Container(width: 300.0, height: 35.0, child: ChipList(5)),
           Container(
-              padding: EdgeInsets.all(5.0),
-              child: Text(
-                exampleText,
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: letter_m,
-                  fontWeight: FontWeight.w300
+            height: 200.0,
+            width: double.infinity,
+            color: Theme.of(context).primaryColor,
+          ),
+          Positioned(
+            top: 80.0,
+            left: 100.0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(bottom: 5.0),
+                  child: Text(
+                    sessionDetail[id]['title'],
+                     style: TextStyle(
+                       color: Colors.white,
+                       fontSize: letter_x,
+                       fontWeight: FontWeight.bold
+                     ),
+                  )
                 ),
-              ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 5.0),
+                  child: Text(
+                    sessionDetail[id]['date'],
+                     style: TextStyle(
+                       color: Colors.white,
+                       fontSize: letter_m,
+                       fontWeight: FontWeight.w300
+                     ),
+                  )
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 5.0),
+                  child: Text(
+                    sessionDetail[id]['time'],
+                     style: TextStyle(
+                       color: Colors.white,
+                       fontSize: letter_md,
+                       fontWeight: FontWeight.w600
+                     ),
+                  )
+                ),
+              ],
             ),
+          ),
+          Positioned(
+            top: 40.0,
+            left: 20.0,
+            child: InkWell(
+                  onTap: (){
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,            
+                  ),
+            )
+          )
         ],
-      ),
-    );
+      );
+    } 
+    
+    Widget speakerContainer (List<Map<dynamic, dynamic>> sessionDetail, int id){
+      return InkWell(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SpeakerDetailScreen()));
+          },
+          child: Container(
+            height: 120.0,
+            width: 800.0,
+            child: Padding(
+              padding: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
+              child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Speaker",
+                   style:
+                    TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontSize: letter_md,
+                      fontWeight: FontWeight.bold 
+                    )    
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 12.0),
+                   child: Row(
+                   children: <Widget>[
+                     Container(
+                      width: 60.0,
+                      height: 60.0,
+                      margin: EdgeInsets.only(top: 2.0, left: 2.0, right: 10.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black54, width: 2.0),
+                        borderRadius: BorderRadius.circular(100.0)
+                      ),
+                      child: CircleAvatar(
+                          backgroundImage: NetworkImage(sessionDetail[id]['pathImage']),
+                             ),
+                     ),
+                     Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: <Widget>[
+                         Text(
+                           sessionDetail[id]['firstName'] + " " + sessionDetail[id]['lastName'],
+                           style: TextStyle(
+                             color: Colors.black54,
+                             fontWeight: FontWeight.bold,
+                             fontSize: letter_xm
+                           )
+                         ),
+                         Text(
+                           sessionDetail[id]['jobTitle'],
+                           style: TextStyle(
+                             color: Colors.black54,
+                             fontWeight: FontWeight.w300,
+                             fontSize: letter_m
+                           )
+                         ),
+                       ],
+                     )        
+                    ],
+                  ),
+                )
+              ],
+            ),
+            )
+          )
+        );
+    } 
+
+    Widget sessionDescription (List<Map<dynamic, dynamic>> sessionDetail, int id){
+      return Container(
+        padding: EdgeInsets.all(10.0),
+        child: Column(
+         crossAxisAlignment: CrossAxisAlignment.start,
+         children: <Widget>[
+            Text(
+           "Descripción",
+            style:
+            TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: letter_md,
+              fontWeight: FontWeight.bold 
+            )    
+            ),
+           Container(width: 300.0, height: 35.0, child: ChipList(sessionId)),
+           Container(
+               padding: EdgeInsets.all(5.0),
+               child: Text(
+                 sessionDetail[id]['description'],
+                 style: TextStyle(
+                   color: Colors.black54,
+                   fontSize: letter_m,
+                   fontWeight: FontWeight.w300
+                 ),
+               ),
+             ),
+         ],
+       ),
+      );
+    } 
 
     final commentsButton = Container(
       height: 65.0,
@@ -189,21 +197,24 @@ class Sessiondetail extends StatelessWidget{
       ),
     );
 
-    final myScreen = Column(
+    Widget myScreen (List<Map<dynamic, dynamic>> sessionDetail, int id){
+        return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          sessionDetailAppbar,
-          speakerContainer,
-          sessionDescription,
+          sessionDetailAppbar(sessionDetail, id),
+          speakerContainer(sessionDetail, id),
+          sessionDescription(sessionDetail, id),
         ],
       );
+    } 
 
-    final screenStack = Stack(
+    Widget screenStack (List<Map<dynamic, dynamic>> sessionDetail, int id){
+      return Stack(
       children: <Widget>[
         Container(
           color: Colors.transparent,
         ),
-        myScreen,
+        myScreen(sessionDetail, id),
         Positioned(
           top: 170.0,
           right: 20.0,
@@ -211,11 +222,21 @@ class Sessiondetail extends StatelessWidget{
         )
       ],
     );
+    } 
 
-    
+    return FutureBuilder<List<Map>>(
+        future: DBProvider.db.getSessionDetailById(sessionId),
+        builder: (BuildContext context, AsyncSnapshot<List<Map>> snapshot){
+          if(!snapshot.hasData){
+            return Center(child: CircularProgressIndicator(),);
+          }
 
-    return Scaffold(
-      body: screenStack
+          final sessionDetail = snapshot.data;   
+
+          return Scaffold(
+            body: screenStack(sessionDetail, 0),
+          );
+        }
     );
   }
 }

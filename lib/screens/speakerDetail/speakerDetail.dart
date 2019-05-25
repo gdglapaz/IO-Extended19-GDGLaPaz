@@ -7,17 +7,12 @@ import 'package:io_extended_gdglapaz/providers/db_provider.dart';
 class SpeakerDetailScreen extends StatelessWidget {
   @override
 
-  String speakerPhoto = "https://www.websa100.com/wp-content/uploads/2016/05/foto-en-blanco-y-negro.png";
-  String speakerName = "Full Name";
-  String speakerDescription = "Google Expert in Angular";
-  String speakerLocation = "La Paz, Bolivia";
-  String speakerAbout = """Lorem ipsum dolor sit amet consectetur adipiscing, elit felis eget suspendisse pharetra purus, lobortis porta senectus erat auctor. Ridiculus nostra tincidunt proin eget taciti vitae id dignissim nascetur tristique, eros viverra mauris odio quis luctus sodales hac hendrerit sem litora, aliquet facilisis felis in vivamus justo netus ultrices urna.""";
+  // int speakerId;
 
   String linkedinLogo = "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png";
-  String linkedinApp = "Linkedin";
-
   String twitterLogo = "http://pngimg.com/uploads/twitter/twitter_PNG32.png";
-  String twitterApp = "Twitter";
+
+  // SpeakerDetailScreen(this.speakerId);
 
   Widget build(BuildContext context) {
 
