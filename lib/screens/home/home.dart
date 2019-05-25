@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:io_extended_gdglapaz/screens/codelabs/codelabs.dart';
-import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 import 'package:io_extended_gdglapaz/screens/techtalks/techtalks.dart';
+import 'package:io_extended_gdglapaz/services/auth.dart';
+import 'package:io_extended_gdglapaz/shared_preferences/user_preferences.dart';
 import 'package:io_extended_gdglapaz/widgets/menu.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,6 +15,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   int currentIndex = 0;
+  final prefs = UserPreferences();
+  final auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +29,18 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 50.0,
             height: 50.0,
             margin: EdgeInsets.all(2.0),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage("https://www.websa100.com/wp-content/uploads/2016/05/foto-en-blanco-y-negro.png"),
-            ),
+            child: InkWell(
+              onTap: (){
+                auth.handleSignIn()
+                    .then((FirebaseUser user) => {
+                      setState(() {})
+                    })
+                    .catchError((e) => print(e));
+              },
+              child: CachedNetworkImage(
+                  imageUrl:  prefs.photoUrl,
+                ),
+            )
           )
         ],
       ),
@@ -40,6 +54,44 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         backgroundColor: Theme.of(context).primaryColor,
       ),
+    );
+  }
+
+  Future<void> _neverSatisfied() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Text("Bienvenido!"),
+                  Text("Bienvenido!")
+                ],
+              ),
+              Divider(height: 5.0,)
+            ],
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('You will never be satisfied. You will never be satisfied. You will never be satisfied. You will never be satisfied.'),
+                Text('You\’re like me. I’m never satisfied.'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Regret'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 
