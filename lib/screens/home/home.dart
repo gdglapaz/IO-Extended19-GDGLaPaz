@@ -6,6 +6,7 @@ import 'package:io_extended_gdglapaz/services/auth.dart';
 import 'package:io_extended_gdglapaz/shared_preferences/user_preferences.dart';
 import 'package:io_extended_gdglapaz/widgets/menu.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:io_extended_gdglapaz/widgets/userProfile.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -26,20 +27,11 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text("I/O Extended"),
         actions: <Widget>[
           Container(
-            width: 50.0,
-            height: 50.0,
-            margin: EdgeInsets.all(2.0),
             child: InkWell(
               onTap: (){
-                auth.handleSignIn()
-                    .then((FirebaseUser user) => {
-                      setState(() {})
-                    })
-                    .catchError((e) => print(e));
+                _showDialog();
               },
-              child: CachedNetworkImage(
-                  imageUrl:  prefs.photoUrl,
-                ),
+              child: UserProfile(),
             )
           )
         ],
@@ -57,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Future<void> _neverSatisfied() async {
+  Future<void> _showDialog() async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -67,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Text("Bienvenido!"),
+                  UserProfile(),
                   Text("Bienvenido!")
                 ],
               ),
@@ -77,15 +69,38 @@ class _HomeScreenState extends State<HomeScreen> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('You will never be satisfied. You will never be satisfied. You will never be satisfied. You will never be satisfied.'),
-                Text('You\’re like me. I’m never satisfied.'),
+                prefs.uid == null ? Text(
+                  'Inicia sesión para reservar codelabs, hacer preguntas, ganar puntos y canjearlos en la tienda habilitada el día del evento (si es un asistente).',
+                  style: TextStyle(
+                    color: Colors.black54
+                  ),
+                )
+                : Text(
+                  "Todos tus codelabs reservados y puntos ganados permanecerán sincronizados con tu cuenta.",
+                  style: TextStyle(
+                      color: Colors.black54
+                  ),
+                ),
               ],
             ),
           ),
           actions: <Widget>[
             FlatButton(
-              child: Text('Regret'),
+              child: Text('Cancelar'),
               onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            prefs.uid == null ? FlatButton(
+              child: Text('Iniciar Sesión'),
+              onPressed: () {
+                auth.handleSignIn();
+                Navigator.of(context).pop();
+              },
+            ) : FlatButton(
+              child: Text('Cerrar Sesión'),
+              onPressed: () {
+                auth.signOut();
                 Navigator.of(context).pop();
               },
             ),

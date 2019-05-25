@@ -16,14 +16,25 @@ class UserPreferences {
     this._prefs = await SharedPreferences.getInstance();
   }
 
+  get uid{
+    return _prefs.getString("uid") ?? null;
+  }
+
   get photoUrl{
     return _prefs.getString("photoUrl") ?? "https://cdn.shopify.com/s/files/1/2805/6822/files/usericon_id76rb_large.png";
   }
 
-  set updateUser(FirebaseUser user){
+  void updateUser(FirebaseUser user){
     _prefs.setString('uid', user.uid);
     _prefs.setString('email', user.email);
     _prefs.setString('photoUrl', user.photoUrl);
     _prefs.setString('displayName', user.displayName);
+  }
+
+  void removeUser(){
+    _prefs.setString('uid', null);
+    _prefs.setString('email', null);
+    _prefs.setString('photoUrl', null);
+    _prefs.setString('displayName', null);
   }
 }
