@@ -20,8 +20,16 @@ class UserPreferences {
     return _prefs.getString("uid") ?? null;
   }
 
+  get email{
+    return _prefs.getString("email") ?? null;
+  }
+
   get photoUrl{
     return _prefs.getString("photoUrl") ?? "https://cdn.shopify.com/s/files/1/2805/6822/files/usericon_id76rb_large.png";
+  }
+
+  get displayName{
+    return _prefs.getString("displayName") ?? null;
   }
 
   void updateUser(FirebaseUser user){

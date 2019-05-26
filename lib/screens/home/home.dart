@@ -60,7 +60,10 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 children: <Widget>[
                   UserProfile(),
-                  Text("Bienvenido!")
+                  prefs.uid == null ? Text("Bienvenido!")
+                  :Expanded(
+                    child: Text(prefs.displayName),
+                  )
                 ],
               ),
               Divider(height: 5.0,)
@@ -94,13 +97,16 @@ class _HomeScreenState extends State<HomeScreen> {
             prefs.uid == null ? FlatButton(
               child: Text('Iniciar Sesión'),
               onPressed: () {
-                auth.handleSignIn();
+                auth.handleSignIn()
+                    .then((FirebaseUser user) => setState((){}))
+                    .catchError((e) => print(e));
                 Navigator.of(context).pop();
               },
             ) : FlatButton(
               child: Text('Cerrar Sesión'),
               onPressed: () {
                 auth.signOut();
+                setState(() {});
                 Navigator.of(context).pop();
               },
             ),
