@@ -3,22 +3,28 @@
 CREATE TABLE Speaker (id_speaker INTEGER PRIMARY KEY,pathImage TEXT,firstName TEXT,lastName TEXT,jobTitle TEXT,countyName TEXT,twitterUSer TEXT,linkedinPath TEXT, isExpert INTEGER, about TEXT);
 
 INSERT INTO Speaker (id_speaker, pathImage, firstName,lastName,jobTitle,countyName,twitterUSer,linkedinPath, isExpert, about) 
-VALUES (1, 'https://pbs.twimg.com/profile_images/986420674435563520/VL1e9Ldp_400x400.jpg', 'Luis', 'Aviles', 'Google Developer Expert en Web y Angular', 'Cochabamba, Bolivia', '@luixaviles', 'https://www.linkedin.com/in/luixaviles/', 1,'Luis Aviles is a Google Developer Expert in Web Technologies and Angular and an enthusiast of Open Source software and communities, as well as being a public speaker, a technology trainer and an author of courses and technical articles.');
+VALUES (1, 'https://pbs.twimg.com/profile_images/986420674435563520/VL1e9Ldp_400x400.jpg', 'Gunar', 'Ortiz', 'Desarrollador Movil y diseñador UX', 'La Paz, Bolivia', '@Pendiente', 'https://bo.linkedin.com/in/gunar-ortiz', 0,'Gunar es CTO en Parkin, Mobile developer, Node.js developer and UX designer, ganador de primer lugar en el HackBo 2018, participo como expositor en diferentes eventos de comunidades tecnológicas.');
 
 INSERT INTO Speaker (id_speaker, pathImage, firstName,lastName,jobTitle,countyName,twitterUSer,linkedinPath, isExpert, about) 
-VALUES (2, 'https://pbs.twimg.com/profile_images/1019713543657086976/sHuPNy5Q_400x400.jpg', 'Matt', 'Sullivan', 'Googler', 'Mountain View, California', '@mjohnsullivan', 'http://www.rustedbrute.com/', 0,'Parte del equipo de Flutter en Google.');
+VALUES (2, 'https://pbs.twimg.com/profile_images/1019713543657086976/sHuPNy5Q_400x400.jpg', 'Luis', 'Aviles', 'Google Developer Expert en Web y Angular', 'Cochabamba, Bolivia', '@luixaviles', 'https://www.linkedin.com/in/luixaviles/', 1,'Luis Aviles es un Google Developer Expert en tecnologías Web y Angular y un entusiasta del Software Código Abierto y diferentes comunidades, es un entrenador de tecnologías y un autor de cursos y articulos tecnicos');
 
 INSERT INTO Speaker (id_speaker, pathImage, firstName,lastName,jobTitle,countyName,twitterUSer,linkedinPath, isExpert, about) 
-VALUES (3, 'https://pbs.twimg.com/profile_images/986420674435563520/VL1e9Ldp_400x400.jpg', 'Luis', 'Aviles', 'Google Developer Expert en Web y Angular', 'Cochabamba, Bolivia', '@luixaviles', 'https://www.linkedin.com/in/luixaviles/', 1,'Luis Aviles is a Google Developer Expert in Web Technologies and Angular and an enthusiast of Open Source software and communities, as well as being a public speaker, a technology trainer and an author of courses and technical articles.');
+VALUES (3, 'https://pbs.twimg.com/profile_images/986420674435563520/VL1e9Ldp_400x400.jpg', 'Nathaly', 'Alarcon', 'Pendiente', 'La Paz, Bolivia', 'Pendiente', 'Pendiente', 0,'Pendiente');
 
 INSERT INTO Speaker (id_speaker, pathImage, firstName,lastName,jobTitle,countyName,twitterUSer,linkedinPath, isExpert, about) 
-VALUES (4, 'https://pbs.twimg.com/profile_images/1019713543657086976/sHuPNy5Q_400x400.jpg', 'Matt', 'Sullivan', 'Googler', 'Mountain View, California', '@mjohnsullivan', 'http://www.rustedbrute.com/', 0,'Parte del equipo de Flutter en Google.');
+VALUES (4, 'https://pbs.twimg.com/profile_ima   ges/1019713543657086976/sHuPNy5Q_400x400.jpg', 'Esteban', 'Saavedra', 'Presidente de la Fundacion AtixLibre', 'Oruro, Bolivia', 'Pendiente', 'Pendiente', 0,'Es un ingeniero de sistemas, cuenta con PhD en TICs y Telecomunicaciones. Presidente de la fundacion AtixLibre, es docente de postgrado, consultor senior y asesor de Tecnologias de informacion');
 
 INSERT INTO Speaker (id_speaker, pathImage, firstName,lastName,jobTitle,countyName,twitterUSer,linkedinPath, isExpert, about) 
-VALUES (5, 'https://pbs.twimg.com/profile_images/986420674435563520/VL1e9Ldp_400x400.jpg', 'Luis', 'Aviles', 'Google Developer Expert en Web y Angular', 'Cochabamba, Bolivia', '@luixaviles', 'https://www.linkedin.com/in/luixaviles/', 1,'Luis Aviles is a Google Developer Expert in Web Technologies and Angular and an enthusiast of Open Source software and communities, as well as being a public speaker, a technology trainer and an author of courses and technical articles.');
+VALUES (5, 'https://pbs.twimg.com/profile_images/986420674435563520/VL1e9Ldp_400x400.jpg', 'Leandro', 'Guardia', 'Desarrollador Web y miembro de Cochabamba AI', 'Cochabamba, Bolivia', '@Pendiente', 'https://bo.linkedin.com/in/leandro-guardia', 1,'Artesano de Software, partidario de agilidad y actividad en Inteligencia Artificial. Freelancer en desarrollo web, speaker, miembro de Cochabamba AI, Ingeniero de Sistemas(UCB Cochabamba)');
 
 INSERT INTO Speaker (id_speaker, pathImage, firstName,lastName,jobTitle,countyName,twitterUSer,linkedinPath, isExpert, about) 
-VALUES (6, 'https://pbs.twimg.com/profile_images/1019713543657086976/sHuPNy5Q_400x400.jpg', 'Matt', 'Sullivan', 'Googler', 'Mountain View, California', '@mjohnsullivan', 'http://www.rustedbrute.com/', 0,'Parte del equipo de Flutter en Google.');
+VALUES (6, 'https://pbs.twimg.com/profile_images/1019713543657086976/sHuPNy5Q_400x400.jpg', 'Andres', 'Vasquez', 'Desarrollador Movil, docente y emprendedor.', 'La Paz, Bolivia', '@Pendiente', 'linkedinPendiente', 0,' Apasionado por el trabajo en equipo, aprendizaje de nuevas tecnologias y la participacion en comunidades de desarrollo.');
+
+INSERT INTO Speaker (id_speaker, pathImage, firstName,lastName,jobTitle,countyName,twitterUSer,linkedinPath, isExpert, about)
+VALUES (7, 'https://pbs.twimg.com/profile_images/1019713543657086976/sHuPNy5Q_400x400.jpg', 'Edwin', 'Salcedo', 'Data Scientist, Ingeniero de Software.', 'La Paz, Bolivia', '@Pendiente', 'linkedinPendiente', 0,' Edwin Salcedo es un Data Scientist, Ingeniero de Software y Docente Investigador, Recientemente retorno al pais despues de estudiar en The University of Sheffield (Inglaterra).');
+
+INSERT INTO Speaker (id_speaker, pathImage, firstName,lastName,jobTitle,countyName,twitterUSer,linkedinPath, isExpert, about)
+VALUES (8, 'https://pbs.twimg.com/profile_images/1019713543657086976/sHuPNy5Q_400x400.jpg', 'Luis', 'Mantilla', 'Pendiente.', 'La Paz, Bolivia', '@Pendiente', 'linkedinPendiente', 0,' Descripcion Pendiente');
 
 ---Categories
 CREATE TABLE Category (id_category INTEGER PRIMARY KEY, nameTechnology TEXT, color TEXT);
@@ -46,12 +52,23 @@ CREATE TABLE Session (
     type TEXT
 );
 
-INSERT INTO Session (id_session,title,description,date,time,type) VALUES (1, 'What is new in Angular', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '09:00', 'T');
-INSERT INTO Session (id_session,title,description,date,time,type) VALUES (2, 'What is new in Android', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '09:45', 'T');
-INSERT INTO Session (id_session,title,description,date,time,type) VALUES (3, 'What is new in Kotlin', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '10:30', 'C');
-INSERT INTO Session (id_session,title,description,date,time,type) VALUES (4, 'What is new in Flutter', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '11:00', 'C');
-INSERT INTO Session (id_session,title,description,date,time,type) VALUES (5, 'What is new in Cloud', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '12:00', 'T');
-INSERT INTO Session (id_session,title,description,date,time,type) VALUES (6, 'What is new in Firebase', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '13:00', 'T');
+-- INSERT INTO Session (id_session,title,description,date,time,type) VALUES (1, 'What is new in Angular', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '09:00', 'T');
+-- INSERT INTO Session (id_session,title,description,date,time,type) VALUES (2, 'What is new in Android', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '09:45', 'T');
+INSERT INTO Session (id_session,title,description,date,time,type) VALUES (3, 'Como Kotlin cambio la arquitectura de mi aplicacion Android', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '9:30', 'T');
+INSERT INTO Session (id_session,title,description,date,time,type) VALUES (4, 'Tensorflow Lite: AI para mobile y dispositivos IoT', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '9:30', 'C');
+INSERT INTO Session (id_session,title,description,date,time,type) VALUES (5, 'Lo nuevo de Chrome y la Web', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '10:15', 'T');
+-- INSERT INTO Session (id_session,title,description,date,time,type) VALUES (6, 'Mejores practicas en la seguridad informática y la seguridad de la información', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '13:00', 'T');
+-- -- INSERT INTO Session (id_session,title,description,date,time,type) VALUES (7, 'What is new in Firebase', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '13:00', 'T');
+-- -- INSERT INTO Session (id_session,title,description,date,time,type) VALUES (8, 'What is new in Firebase', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '13:00', 'T');
+-- -- INSERT INTO Session (id_session,title,description,date,time,type) VALUES (9, 'What is new in Firebase', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '13:00', 'T');
+-- INSERT INTO Session (id_session,title,description,date,time,type) VALUES (10, 'What is new in Firebase', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '13:00', 'T');
+INSERT INTO Session (id_session,title,description,date,time,type) VALUES (11, 'Developing amazing apps with Flutter', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '14:00', 'C');
+INSERT INTO Session (id_session,title,description,date,time,type) VALUES (12, 'Pendiente', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '14:15', 'T');
+INSERT INTO Session (id_session,title,description,date,time,type) VALUES (13, 'Google Cloud Platform: Hacia una nueva forma de implementar plataformas empresariales', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '15:00', 'T');
+INSERT INTO Session (id_session,title,description,date,time,type) VALUES (14, 'Desarrollo Fullstack con Angular', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '15:30', 'C');
+INSERT INTO Session (id_session,title,description,date,time,type) VALUES (15, 'TensorFlow bajo el microscopio', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '15:30', 'T');
+INSERT INTO Session (id_session,title,description,date,time,type) VALUES (16, 'First steps with Android Coroutines', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '15:30', 'T');
+-- INSERT INTO Session (id_session,title,description,date,time,type) VALUES (17, 'Entrega de souvenirs y premios', 'A palette is a collection of colors, i.e. hues and their shades. Material-UI provides all colors from the Material Design guidelines. This color palette have been designed to work harmoniously with each other.', '01/06/2019', '15:30', 'C');
 
 ---Session - Speaker
 
@@ -67,13 +84,15 @@ CREATE TABLE Session_Speaker (
         REFERENCES Speaker(id_speaker)
 );
 
-INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (1,1);
-INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (1,2);
-INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (2,2);
-INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (3,3);
-INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (4,4);
-INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (5,5);
-INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (6,6);
+INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (3,1);
+INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (4,7);
+INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (5,2);
+INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (11,8);
+INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (12,3);
+INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (13,4);
+INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (14,2);
+INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (15,5);
+INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (16,6);
 
 ---Session - Categories
 
@@ -89,18 +108,19 @@ CREATE TABLE Session_Category (
         REFERENCES Category(id_category)
 );
 
-INSERT INTO Session_Category (id_session, id_category) VALUES (1, 2);
-INSERT INTO Session_Category (id_session, id_category) VALUES (1, 6);
-INSERT INTO Session_Category (id_session, id_category) VALUES (2, 1);
-INSERT INTO Session_Category (id_session, id_category) VALUES (2, 3);
 INSERT INTO Session_Category (id_session, id_category) VALUES (3, 1);
-INSERT INTO Session_Category (id_session, id_category) VALUES (3, 4);
-INSERT INTO Session_Category (id_session, id_category) VALUES (3, 5);
-INSERT INTO Session_Category (id_session, id_category) VALUES (4, 6);
-INSERT INTO Session_Category (id_session, id_category) VALUES (5, 7);
-INSERT INTO Session_Category (id_session, id_category) VALUES (5, 8);
-INSERT INTO Session_Category (id_session, id_category) VALUES (6, 9);
-INSERT INTO Session_Category (id_session, id_category) VALUES (6, 11);
+INSERT INTO Session_Category (id_session, id_category) VALUES (3, 11);
+INSERT INTO Session_Category (id_session, id_category) VALUES (4, 1);
+INSERT INTO Session_Category (id_session, id_category) VALUES (4, 10);
+INSERT INTO Session_Category (id_session, id_category) VALUES (5, 2);
+INSERT INTO Session_Category (id_session, id_category) VALUES (11, 1);
+INSERT INTO Session_Category (id_session, id_category) VALUES (11, 7);
+INSERT INTO Session_Category (id_session, id_category) VALUES (12, 9);
+INSERT INTO Session_Category (id_session, id_category) VALUES (13, 4);
+INSERT INTO Session_Category (id_session, id_category) VALUES (14, 2);
+INSERT INTO Session_Category (id_session, id_category) VALUES (14, 5);
+INSERT INTO Session_Category (id_session, id_category) VALUES (15, 10);
+INSERT INTO Session_Category (id_session, id_category) VALUES (16, 1);
 
 
 
