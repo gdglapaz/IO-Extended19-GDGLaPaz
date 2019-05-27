@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:io_extended_gdglapaz/screens/aboutUs/aboutus.dart';
 import 'package:io_extended_gdglapaz/screens/home/home.dart';
+import 'package:io_extended_gdglapaz/shared_preferences/user_preferences.dart';
+import 'package:io_extended_gdglapaz/screens/speakers/speakersScreen.dart';
 import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 
-void main() => runApp(MyApp());
+void main() async{
+  final prefs = UserPreferences();
+  await prefs.initPreferences();
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -14,7 +21,9 @@ class MyApp extends StatelessWidget {
       initialRoute: 'home',
       routes: {
         'home': (BuildContext context) => HomeScreen(),
-        'about-us': (BuildContext context) => AboutUsScreen()
+        'about-us': (BuildContext context) => AboutUsScreen(),
+        'speakers': (BuildContext context) => SpeakersScreen(),
+
       },
       theme: ThemeData(
         primaryColor: Color(0xFF8500CC),
