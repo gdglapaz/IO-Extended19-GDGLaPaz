@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:io_extended_gdglapaz/widgets/menu.dart';
+import 'package:io_extended_gdglapaz/util/ui_utils.dart';
+
 class AboutUsScreen extends StatelessWidget {
 
   @override
@@ -9,25 +11,26 @@ class AboutUsScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text('About Us'),
           ),
-          body: Center(//container
+          body: Container(
+              color: Colors.white,//container
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(
                     width: 200.0,
-                    child:  Image.network ('https://secure.meetupstatic.com/photos/event/d/9/5/1/600_481435633.jpeg'),
+                    child:  Image.asset ('assets/img/gdglapaz_square.png'),
                   ),
-                  SizedBox(height: 12.0,),
-                  SizedBox(
-                    width: 350.0,
-                    child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
-                        ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                        ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris'
-                        ' nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in'
-                        ' reprehenderit in voluptate velit esse cillum dolore eu fugiat'
-                        ' nulla pariatur. Excepteur sint occaecat cupidatat non proident, '
-                        'sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                        textAlign: TextAlign.justify,),
+                  SizedB ox(height: 12.0,),
+                  Container(
+                    margin: EdgeInsets.all(margin_m),
+                    child: Text(
+                      'Somos un grupos de personas apasionadas por la tecnología, parte de una red enorme de comunidades de desarrolladores y con gente comprometida con impulsar el ecosistema tecnológico y emprendedor de la ciudad y del país. \n'
+                      'Empoderamos personas con tecnologia, organizando eventos tecnológicos, studyjams, meetups, etc.',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: letter_m
+                      ),
+                    ),
                   ),
                  ],
               )

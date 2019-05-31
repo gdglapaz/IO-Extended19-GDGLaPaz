@@ -35,7 +35,6 @@ class Contentdetail extends StatelessWidget{
       height: 250.0,
       child: Column(
         children: <Widget>[
-//          listChipWidget,
           Text(aboutSpeaker,style: TextStyle(color: Colors.blueGrey,fontSize: 18.0),),
         ],
       ),

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:io_extended_gdglapaz/screens/sessionDetail/widgets/Topdetail.dart';
-import 'package:io_extended_gdglapaz/screens/sessionDetail/widgets/Speakerdetail.dart';
-import 'package:io_extended_gdglapaz/screens/sessionDetail/widgets/Contentdetail.dart';
 import 'package:io_extended_gdglapaz/screens/speakerDetail/speakerDetail.dart';
 import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 import 'package:io_extended_gdglapaz/widgets/chipList.dart';
@@ -18,69 +15,61 @@ class Sessiondetail extends StatelessWidget{
   Widget build(BuildContext context) {
 
     Widget sessionDetailAppbar(List<Map<dynamic, dynamic>> sessionDetail, int id){
-        return Stack(
-        children: <Widget>[
-          Container(
-            height: 200.0,
-            width: double.infinity,
-            color: Theme.of(context).primaryColor,
-          ),
-          Positioned(
-            top: 80.0,
-            left: 100.0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(bottom: 5.0),
-                  child: Text(
-                    sessionDetail[id]['title'],
-                     style: TextStyle(
-                       color: Colors.white,
-                       fontSize: letter_x,
-                       fontWeight: FontWeight.bold
-                     ),
-                  )
+        return Container(
+          height: 150.0,
+          color: Theme.of(context).primaryColor,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                flex: 2,
+                child: Container(
+                  margin: EdgeInsets.all(margin_m),
+                  child: (sessionDetail[id]['type'] == 'T' ? Image.asset("assets/img/techtalks.png"): Image.asset("assets/img/codelabs.png")),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 5.0),
-                  child: Text(
-                    sessionDetail[id]['date'],
-                     style: TextStyle(
-                       color: Colors.white,
-                       fontSize: letter_m,
-                       fontWeight: FontWeight.w300
-                     ),
-                  )
+              ),
+              Expanded(
+                flex: 8,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      sessionDetail[id]['title'],
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          color: Colors.white,
+                            fontSize: letter_x,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(margin_xs),
+                      child: Text(
+                        sessionDetail[id]['date'],
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: letter_m,
+                            fontWeight: FontWeight.w300
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(margin_xs),
+                      child: Text(
+                        sessionDetail[id]['time'],
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: letter_md,
+                            fontWeight: FontWeight.w600
+                        ),
+                      )
+                    )
+                  ],
                 ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 5.0),
-                  child: Text(
-                    sessionDetail[id]['time'],
-                     style: TextStyle(
-                       color: Colors.white,
-                       fontSize: letter_md,
-                       fontWeight: FontWeight.w600
-                     ),
-                  )
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            top: 40.0,
-            left: 20.0,
-            child: InkWell(
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,            
-                  ),
-            )
+              )
+            ],
           )
-        ],
       );
     }
 
@@ -128,7 +117,10 @@ class Sessiondetail extends StatelessWidget{
               fontWeight: FontWeight.bold 
             )    
             ),
-           Container(width: 300.0, height: 35.0, child: ChipList(sessionId)),
+           Container(
+             margin: EdgeInsets.only(bottom: margin_s, top: margin_s),
+             width: 300.0, height: 35.0, child: ChipList(sessionId)
+           ),
            Container(
                padding: EdgeInsets.all(5.0),
                child: Text(
@@ -146,44 +138,27 @@ class Sessiondetail extends StatelessWidget{
     } 
 
     final commentsButton = Container(
-      height: 65.0,
-      width: 65.0,
-      decoration: BoxDecoration(
-        color: Colors.blue,
-        shape: BoxShape.circle
-      ),
-      child: Icon(
-        Icons.add_comment,
-        color: Colors.white,
+      child: FloatingActionButton(
+        onPressed: null,
+        child: Icon(Icons.question_answer),
       ),
     );
 
     Widget myScreen (List<Map<dynamic, dynamic>> sessionDetail, int id){
-        return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          sessionDetailAppbar(sessionDetail, id),
-          speakerContainer(sessionDetail),
-          sessionDescription(sessionDetail, id),
-        ],
-      );
-    } 
-
-    Widget screenStack (List<Map<dynamic, dynamic>> sessionDetail, int id){
-      return Stack(
-      children: <Widget>[
-        Container(
-          color: Colors.transparent,
-        ),
-        myScreen(sessionDetail, id),
-        Positioned(
-          top: 170.0,
-          right: 20.0,
-          child: commentsButton,
-        )
-      ],
-    );
-    } 
+        return Scaffold(
+          appBar: AppBar(
+            elevation: 0.0,
+          ),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              sessionDetailAppbar(sessionDetail, id),
+              speakerContainer(sessionDetail),
+              sessionDescription(sessionDetail, id),
+            ],
+          )
+        );
+    }
 
     return FutureBuilder<List<Map>>(
         future: DBProvider.db.getSessionDetailById(sessionId),
@@ -195,7 +170,7 @@ class Sessiondetail extends StatelessWidget{
           final sessionDetail = snapshot.data;   
 
           return Scaffold(
-            body: screenStack(sessionDetail, 0),
+            body: myScreen(sessionDetail, 0),
           );
         }
     );

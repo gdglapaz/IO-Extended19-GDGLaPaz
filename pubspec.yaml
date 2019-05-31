@@ -30,6 +30,7 @@ dependencies:
   firebase_auth: ^0.8.3
   cached_network_image: ^0.8.0
   shared_preferences: ^0.5.2+1
+  url_launcher: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -47,8 +48,27 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/IO19_LP.db
+    - assets/IO19_EXT_LPZ.db
     - assets/img/io_ext_lapaz.png
+    - assets/img/gdglapaz_square.png
+    - assets/img/twitter.png
+    - assets/img/lunch.png
+    - assets/img/codelabs.png
+    - assets/img/techtalks.png
+    - assets/img/speakers/AbdulK.jpg
+    - assets/img/speakers/AndresV.jpg
+    - assets/img/speakers/comtec.png
+    - assets/img/speakers/EdwinS.jpg
+    - assets/img/speakers/EstebanS.png
+    - assets/img/speakers/GunarO.jpg
+    - assets/img/speakers/jalasoft.png
+    - assets/img/speakers/LeandroG.jpg
+    - assets/img/speakers/LuisA.jpeg
+    - assets/img/speakers/LuisM.jpeg
+    - assets/img/speakers/NathalyA.jpeg
+    - assets/img/speakers/YuryC.png
+    - assets/img/speakers/summit_global.png
+    - assets/img/speakers/CarloR.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

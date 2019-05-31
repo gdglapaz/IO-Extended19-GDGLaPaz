@@ -29,7 +29,7 @@ class DBProvider {
 
   initDB() async {
     var databasesPath = await getDatabasesPath();
-    var path = join(databasesPath, "IO19_LP.db");
+    var path = join(databasesPath, "IO19_EXT_LPZ.db");
 
     var exists = await databaseExists(path);
 
@@ -40,7 +40,7 @@ class DBProvider {
       } catch (_) {}
 
       // Copy from asset
-      ByteData data = await rootBundle.load(join("assets", "IO19_LP.db"));
+      ByteData data = await rootBundle.load(join("assets", "IO19_EXT_LPZ.db"));
       List<int> bytes =
       data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 
@@ -68,7 +68,7 @@ class DBProvider {
 
   Future<List<SpeakerModel>> getAllSpeakers() async {
     final db = await database;
-    final response = await db.query('Speaker');
+    final response = await db.query('Speaker', orderBy:  'firstName');
 
     List<SpeakerModel> list = response.isNotEmpty
                             ? response.map((s) => SpeakerModel.fromJson(s)).toList()
@@ -117,7 +117,7 @@ class DBProvider {
   Future<List<Map>> getTechTalks() async {
     final db = await database;
     final response = await db.rawQuery(
-      'SELECT Session.id_session, Speaker.id_speaker, Speaker.pathImage, Speaker.firstName, Speaker.lastName, Session.time, Session.title'
+      '﻿SELECT Session.id_session, Speaker.id_speaker, Speaker.pathImage, Speaker.firstName, Speaker.lastName, Session.time, Session.title, Session.extraInfo, Session.extraTitle, Session.extraPathImage, Session.hasDetails'
       ' FROM Session'
       ' LEFT JOIN Session_Speaker on Session_Speaker.id_session = Session.id_session'
       ' LEFT JOIN Speaker on Speaker.id_speaker = Session_Speaker.id_speaker'
@@ -134,12 +134,12 @@ class DBProvider {
   Future<List<Map>> getCodelabs() async {
     final db = await database;
     final response = await db.rawQuery(
-        'SELECT Session.id_session, Speaker.id_speaker, Speaker.pathImage, Speaker.firstName, Speaker.lastName, Session.time, Session.title'
-            ' FROM Session'
-            ' LEFT JOIN Session_Speaker on Session_Speaker.id_session = Session.id_session'
-            ' LEFT JOIN Speaker on Speaker.id_speaker = Session_Speaker.id_speaker'
-            ' WHERE Session.type = "C"'
-            ' ORDER BY Session.id_session ASC;'
+      '﻿SELECT Session.id_session, Speaker.id_speaker, Speaker.pathImage, Speaker.firstName, Speaker.lastName, Session.time, Session.title, Session.extraInfo, Session.extraTitle, Session.extraPathImage, Session.hasDetails'
+      ' FROM Session'
+      ' LEFT JOIN Session_Speaker on Session_Speaker.id_session = Session.id_session'
+      ' LEFT JOIN Speaker on Speaker.id_speaker = Session_Speaker.id_speaker'
+      ' WHERE Session.type = "C"'
+      ' ORDER BY Session.id_session ASC;'
     );
 
     List<Map> list = response.isNotEmpty

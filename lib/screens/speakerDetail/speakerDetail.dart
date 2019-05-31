@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 import 'package:io_extended_gdglapaz/models/speakerModel.dart';
 import 'package:io_extended_gdglapaz/providers/db_provider.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 
 class SpeakerDetailScreen extends StatelessWidget {
   @override
@@ -14,37 +14,46 @@ class SpeakerDetailScreen extends StatelessWidget {
 
   SpeakerDetailScreen(this.speakerId);
 
+  _launchURL(String mUrl) async {
+    if (await canLaunch(mUrl)) {
+      await launch(mUrl);
+    } else {
+      throw 'Could not launch $mUrl';
+    }
+  }
+
   Widget build(BuildContext context) {
 
     Widget speakerPhoto_Container (SpeakerModel speakerModel){
       return Container(
-              width: 100.0,
-              height: 100.0,
+              width: 130.0,
+              height: 130.0,
               margin: EdgeInsets.all(2.0),
               child: CircleAvatar(
-                backgroundImage: NetworkImage(speakerModel.pathImage),
+                backgroundImage: AssetImage(speakerModel.pathImage),
               ),
             );
-
     }
 
     Widget speakerName_Text (SpeakerModel speakerModel){
       return Text(speakerModel.firstName + " " + speakerModel.lastName,
               style: TextStyle(
               color: Colors.white,
-              fontSize: 20.0,
+              fontSize: letter_x,
               fontWeight: FontWeight.bold
               ),
             );
-    } 
+    }
 
     Widget speakerDescription_Text (SpeakerModel speakerModel){
-      return Text(speakerModel.jobTitle,
-              style: TextStyle(
+      return Text(
+          speakerModel.jobTitle,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
               color: Colors.white,
-              fontSize: 16.0,
-              ),
-            );
+              fontSize: letter_xm,
+          ),
+      );
     } 
 
     Widget speakersAppBar (SpeakerModel speakerModel) {
@@ -52,26 +61,25 @@ class SpeakerDetailScreen extends StatelessWidget {
         color: Theme.of(context).primaryColor,
         height: 250.0,
         width: double.infinity,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(bottom: 5.0),
+                padding: EdgeInsets.only(bottom: margin_xs),
                 child: speakerPhoto_Container(speakerModel),
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 5.0),
-                child: speakerName_Text(speakerModel),
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: margin_xs),
+                  child: speakerName_Text(speakerModel),
+                ),
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 5.0),
-                child: speakerDescription_Text(speakerModel),
+              Expanded(
+                  child: speakerDescription_Text(speakerModel),
               )
             ],
           ),
-        ),
       );
     } 
 
@@ -98,28 +106,26 @@ class SpeakerDetailScreen extends StatelessWidget {
     Widget linkedin_Inkwell (SpeakerModel speakerModel){
       return InkWell(
         onTap: (){
-         //Open Linkedin App
+          _launchURL(speakerModel.linkedinPath);
         },
         child: Row(
         children: <Widget>[
-         Container(
-               margin: EdgeInsets.only(left: 4.0),
-               width: 20.0,
-               height: 20.0,
-               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(linkedinLogo) 
-                )
+          Icon(
+            Icons.link,
+            color: Colors.black54,
+          ),
+         Expanded(
+           child: Container(
+               margin: EdgeInsets.only(left: 10.0),
+               child: Text(
+               speakerModel.linkedinPath,
+               overflow: TextOverflow.ellipsis,
+               style: TextStyle(
+                   color: Colors.black54,
+                   fontSize: 16.0
                ),
-             ),
-         Padding(
-           padding: EdgeInsets.only(left: 10.0),
-           child: Text(speakerModel.linkedinPath, 
-           style: TextStyle(
-             color: Colors.black54,
-             fontSize: 16.0
+             )
            ),
-           )
          )
         ],
        )
@@ -127,9 +133,9 @@ class SpeakerDetailScreen extends StatelessWidget {
     } 
 
     Widget twitter_Inkwell (SpeakerModel speakerModel){
-      return InkWell(
+      return speakerModel.twitterUSer != null ? InkWell(
       onTap: (){
-        //Open Twitter App
+        _launchURL('https://twitter.com/'+speakerModel.twitterUSer);
       },
       child: Row(
       children: <Widget>[
@@ -139,64 +145,75 @@ class SpeakerDetailScreen extends StatelessWidget {
               height: 20.0,
               decoration: BoxDecoration(
                image: DecorationImage(
-                 image: NetworkImage(twitterLogo) 
+                 image: AssetImage("assets/img/twitter.png")
                )
               ),
             ),
         Padding(
           padding: EdgeInsets.only(left: 10.0),
-          child: Text(speakerModel.twitterUSer, 
-          style: TextStyle(
-            color: Colors.black54,
-            fontSize: 16.0
-          ),
+          child: Text(
+            speakerModel.twitterUSer,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: Colors.black54,
+              fontSize: 16.0
+            ),
           )
         )
       ],
       )
-     );
-    } 
+     ): Container();
+    }
 
     Widget informationContainer (SpeakerModel speakerModel){
-      return Container(
-       height: 150.0,
-       width: 320.0,
-       decoration: BoxDecoration(
-         color: Colors.white,
-         border: new Border .all(
-           color: Theme.of(context).dividerColor,
-           width: 1.5
-         ),
-         borderRadius: BorderRadius.all(Radius.circular(8.0))
-       ),
-       child: Padding(
-         padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-         child: Column(
-         children: <Widget>[
-           Align(
-             alignment: Alignment.centerLeft,
-             child: Text("Información",
-             style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold
-            ),),
-           ),
-           Padding(
-             padding: EdgeInsets.only(top: 8.0),
-             child: location_Text(speakerModel),
-           ),
-           Padding(
-             padding: EdgeInsets.only(top: 8.0),
-             child: linkedin_Inkwell(speakerModel),
-           ),
-           Padding(
-             padding: EdgeInsets.only(top: 8.0),
-             child: twitter_Inkwell(speakerModel),
-           )
-         ],
-       ),
-       )
+      return Transform.translate(
+        offset: Offset(0,-margin_xl),
+        child: Container(
+            margin: EdgeInsets.only(left: margin_m, right: margin_m),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                border: new Border .all(
+                    color: Theme.of(context).dividerColor,
+                    width: 1.0
+                ),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                      color: Colors.black38,
+                      blurRadius: 10.0,
+                      offset: Offset(0.0, 7.0)
+                  )
+                ],
+                borderRadius: BorderRadius.all(Radius.circular(8.0))
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: margin_m, vertical: margin_m),
+              child: Column(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Información",
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: letter_xm,
+                          fontWeight: FontWeight.bold
+                      ),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: location_Text(speakerModel),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: twitter_Inkwell(speakerModel),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: linkedin_Inkwell(speakerModel),
+                  ),
+                ],
+              ),
+            )
+        ),
       );
     } 
 
@@ -226,37 +243,46 @@ class SpeakerDetailScreen extends StatelessWidget {
     } 
 
     Widget aboutContainer (SpeakerModel speakerModel){
-      return Container(
-        height: 280.0,
-        width: 320.0,
-        decoration: BoxDecoration(
-         color: Colors.white,
-          border: new Border .all(
-           color: Theme.of(context).dividerColor,
-           width: 1.5
-         ),
-         borderRadius: BorderRadius.all(Radius.circular(8.0))
-       ),
-        child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-        child: Column(
-         children: <Widget>[
-           Align(
-             alignment: Alignment.centerLeft,
-             child: Text("About",
-             style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold
-            ),),
-           ),
-           Padding(
-             padding: EdgeInsets.only(top: 8.0),
-             child: about_Text(speakerModel),
-           ) 
-         ],
-       ),
-       )
+      return Transform.translate(
+        offset: Offset(0, -margin_m),
+        child: Container(
+            margin: EdgeInsets.only(left: margin_m, right: margin_m, bottom: margin_m),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                    color: Colors.black38,
+                    blurRadius: 10.0,
+                    offset: Offset(0.0, 7.0)
+                )
+              ],
+              border: new Border .all(
+                  color: Theme.of(context).dividerColor,
+                  width: 1.0
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: margin_m, vertical: margin_m),
+              child: Column(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("About",
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: letter_xm,
+                          fontWeight: FontWeight.bold
+                      ),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: about_Text(speakerModel),
+                  )
+                ],
+              ),
+            )
+        ),
       );
     } 
 
@@ -271,7 +297,7 @@ class SpeakerDetailScreen extends StatelessWidget {
     );
 
   return FutureBuilder<SpeakerModel>(
-    future: DBProvider.db.getSpeakerId(2),
+    future: DBProvider.db.getSpeakerId(speakerId),
     builder: (BuildContext context, AsyncSnapshot<SpeakerModel> snapshot){
 
       if(!snapshot.hasData){
@@ -280,35 +306,18 @@ class SpeakerDetailScreen extends StatelessWidget {
 
       SpeakerModel speaker = snapshot.data;
 
-        return MaterialApp(
-        home: Scaffold(
-          body: Stack(
+        return Scaffold(
+          appBar: AppBar(
+            elevation: 0.0,
+          ),
+          body: ListView(
             children: <Widget>[
-             Container(
-               color: Colors.transparent,
-               width: double.infinity,
-                height: double.infinity,
-             ),
               speakersAppBar(speaker),
-              Positioned(
-               top: 35.0,
-               left: 20.0,
-               child: arrowAppbar,
-              ),
-              Positioned(
-               bottom: 310.0,
-               left: 25.0,
-               child: informationContainer(speaker),
-              ),
-              Positioned(
-               bottom: 20.0,
-               left: 25.0,
-                child: aboutContainer(speaker),
-              )
+              informationContainer(speaker),
+              aboutContainer(speaker),
            ],
           ),
-        ),
-      );
+        );
     });
   }
 }

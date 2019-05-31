@@ -9,18 +9,18 @@ class SessionItem extends StatelessWidget {
   String pathImage;
   String fullName;
   String titleTalk;
-  List<String> nameTechnologies;
+  int hasDetails;
 
   double sizeAvatar = 28.0;
 
-  SessionItem(this.id, this.sessionTime, this.pathImage, this.fullName, this.titleTalk, this.nameTechnologies);
+  SessionItem(this.id, this.sessionTime, this.pathImage, this.fullName, this.titleTalk, this.hasDetails);
 
   @override
   Widget build(BuildContext context) {
     final avatarWidget = Container(
       margin: EdgeInsets.only(left: margin_s),
       child: CircleAvatar(
-        backgroundImage: NetworkImage("${pathImage}"),
+        backgroundImage: AssetImage(pathImage),
         radius: sizeAvatar,
       ),
     );
@@ -39,6 +39,8 @@ class SessionItem extends StatelessWidget {
         child: Text(
           titleTalk,
           textDirection: TextDirection.ltr,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
               fontSize: letter_md,
               color: Colors.black54
@@ -59,6 +61,8 @@ class SessionItem extends StatelessWidget {
         )
     );
 
+    final snackBar = SnackBar(content: Text('Este item no tiene información disponible!!!'));
+
     final cardSessionWidget = Container(
         height: 82.0,
         margin: EdgeInsets.only(top: 1.0, bottom: 5.0),
@@ -68,10 +72,15 @@ class SessionItem extends StatelessWidget {
         ),
         child: InkWell(
           onTap: (){
-            Navigator.push(
-            context,
-              MaterialPageRoute(builder: (context) => Sessiondetail(id)),
-            );
+            if(this.hasDetails == 1){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Sessiondetail(id)),
+              );
+            }
+            else{
+              Scaffold.of(context).showSnackBar(snackBar);
+            }
           },
           child: Row(
             children: <Widget>[
