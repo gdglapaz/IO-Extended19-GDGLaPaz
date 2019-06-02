@@ -20,11 +20,10 @@ class AboutUsScreen extends StatelessWidget {
                     width: 200.0,
                     child:  Image.asset ('assets/img/gdglapaz_square.png'),
                   ),
-                  SizedB ox(height: 12.0,),
                   Container(
                     margin: EdgeInsets.all(margin_m),
                     child: Text(
-                      'Somos un grupos de personas apasionadas por la tecnología, parte de una red enorme de comunidades de desarrolladores y con gente comprometida con impulsar el ecosistema tecnológico y emprendedor de la ciudad y del país. \n'
+                      'Somos un grupos de personas apasionadas por la tecnología, parte de una red enorme de comunidades de desarrolladores y con gente comprometida con impulsar el ecosistema tecnológico y emprendedor de la ciudad y del país. \n\n'
                       'Empoderamos personas con tecnologia, organizando eventos tecnológicos, studyjams, meetups, etc.',
                       textAlign: TextAlign.justify,
                       style: TextStyle(

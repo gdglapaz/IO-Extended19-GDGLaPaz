@@ -78,7 +78,7 @@ class Sessiondetail extends StatelessWidget{
           onTap: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => SpeakerDetailScreen(sessionId)));
           },
-          child: Container(
+          child: sessionDetail[0]["id_speaker"] != null ? Container(
             height: 120.0,
             child: Padding(
               padding: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
@@ -98,7 +98,7 @@ class Sessiondetail extends StatelessWidget{
               ],
             ),
             )
-          )
+          ) : Container()
         );
     }
 
