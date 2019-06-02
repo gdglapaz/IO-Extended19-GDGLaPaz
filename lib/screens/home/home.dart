@@ -1,7 +1,12 @@
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:io_extended_gdglapaz/screens/codelabs/codelabs.dart';
-import 'package:io_extended_gdglapaz/util/palette_utils.dart';
 import 'package:io_extended_gdglapaz/screens/techtalks/techtalks.dart';
+import 'package:io_extended_gdglapaz/services/auth.dart';
+import 'package:io_extended_gdglapaz/shared_preferences/user_preferences.dart';
+import 'package:io_extended_gdglapaz/widgets/menu.dart';
+//import 'package:cached_network_image/cached_network_image.dart';
+import 'package:io_extended_gdglapaz/widgets/userProfile.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,36 +16,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   int currentIndex = 0;
+  //final prefs = UserPreferences();
+  //final auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Menu(),
       appBar: AppBar(
-        leading: Icon(
-          Icons.menu
-        ),
         title: Text("I/O Extended"),
-        actions: <Widget>[
-          Container(
-            width: 50.0,
-            height: 50.0,
-            margin: EdgeInsets.all(2.0),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage("https://www.websa100.com/wp-content/uploads/2016/05/foto-en-blanco-y-negro.png"),
-            ),
-          )
-        ],
       ),
       body: _callPage(currentIndex),
       bottomNavigationBar: _createBottomNavigationBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: null,
-        child: Icon(
-            Icons.question_answer
-        ),
-        backgroundColor: Theme.of(context).primaryColor,
-      ),
     );
   }
 

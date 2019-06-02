@@ -10,7 +10,7 @@ class TechtalksScreen extends StatefulWidget {
 }
 
 class _TechtalksScreenState extends State<TechtalksScreen> {
-
+  
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Map>>(
@@ -27,7 +27,8 @@ class _TechtalksScreenState extends State<TechtalksScreen> {
           for (Map<String, dynamic> data in sessions) {
             itemsSessions.add(
               TimelineModel(
-                SessionItem(data['id'], data['time'], data['pathImage'], data['firstName'] + ' ' +data['lastName'], data['title'], ['Flutter', 'Design', 'iOS']),
+                data["id_speaker"] != null ? SessionItem(data['id_session'], data['time'], data['pathImage'], data['firstName'] + ' ' +data['lastName'], data['title'], data['hasDetails'])
+                    : SessionItem(data['id_session'], data['time'], data['extraPathImage'], data['extraTitle'], data['title'], data['hasDetails']),
                 position: TimelineItemPosition.left,
                 iconBackground: Colors.lightGreenAccent,
               )

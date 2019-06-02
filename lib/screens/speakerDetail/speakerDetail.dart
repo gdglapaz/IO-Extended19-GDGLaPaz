@@ -1,286 +1,341 @@
 import 'package:flutter/material.dart';
-import 'package:io_extended_gdglapaz/util/palette_utils.dart';
+import 'package:io_extended_gdglapaz/util/ui_utils.dart';
+import 'package:io_extended_gdglapaz/models/speakerModel.dart';
+import 'package:io_extended_gdglapaz/providers/db_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart';
 
 class SpeakerDetailScreen extends StatelessWidget {
   @override
 
-  String speakerPhoto = "https://www.websa100.com/wp-content/uploads/2016/05/foto-en-blanco-y-negro.png";
-  String speakerName = "Full Name";
-  String speakerDescription = "Google Expert in Angular";
+   int speakerId;
 
-  String speakerLocation = "La Paz, Bolivia";
+  String linkedinLogo = "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png";
 
-  String speakerAbout = """Lorem ipsum dolor sit amet consectetur adipiscing, elit felis eget suspendisse pharetra purus, lobortis porta senectus erat auctor. Ridiculus nostra tincidunt proin eget taciti vitae id dignissim nascetur tristique, eros viverra mauris odio quis luctus sodales hac hendrerit sem litora, aliquet facilisis felis in vivamus justo netus ultrices urna.""";
+  SpeakerDetailScreen(this.speakerId);
 
-  final linkedinLogo = "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png";
-  final linkedinApp = "Linkedin";
-
-  final twitterLogo = "http://pngimg.com/uploads/twitter/twitter_PNG32.png";
-  final twitterApp = "Twitter";
-
-  SpeakerDetailScreen(this.speakerPhoto, this.speakerName, this.speakerDescription);
+  _launchURL(String mUrl) async {
+    if (await canLaunch(mUrl)) {
+      await launch(mUrl);
+    } else {
+      throw 'Could not launch $mUrl';
+    }
+  }
 
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: Theme.of(context).primaryColorDark, //or set color with: Color(0xFF0000FF)
+    ));
 
-    final speakerPhoto_Container = Container(
-              width: 100.0,
-              height: 100.0,
+    Widget speakerPhoto_Container (SpeakerModel speakerModel){
+      return Container(
+              width: 130.0,
+              height: 130.0,
               margin: EdgeInsets.all(2.0),
               child: CircleAvatar(
-                backgroundImage: NetworkImage(speakerPhoto),
+                backgroundImage: AssetImage(speakerModel.pathImage),
               ),
             );
+    }
 
-    final speakerName_Text =  Text("Full Name",
+    Widget speakerName_Text (SpeakerModel speakerModel){
+      return Text(speakerModel.firstName + " " + speakerModel.lastName,
               style: TextStyle(
               color: Colors.white,
-              fontSize: 20.0,
+              fontSize: letter_x,
               fontWeight: FontWeight.bold
               ),
             );
+    }
 
-    final speakerDescription_Text = 
-            Text("Google Developer Expert in Angular",
-              style: TextStyle(
+    Widget speakerDescription_Text (SpeakerModel speakerModel){
+      return Text(
+          speakerModel.jobTitle,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
               color: Colors.white,
-              fontSize: 16.0,
-              ),
-            );
+              fontSize: letter_xm,
+          ),
+      );
+    } 
 
-    final speakersAppBar = Container(
-      color: Color(primaryColor),
-      height: 250.0,
-      width: double.infinity,
-      child: Center(
+    Widget speakersAppBar (SpeakerModel speakerModel) {
+        return Container(
+        color: Theme.of(context).primaryColor,
+        height: 310.0,
+        width: double.infinity,
+        padding: EdgeInsets.only(top: 55.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(bottom: 5.0),
-              child: speakerPhoto_Container,
-            ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 5.0),
-              child: speakerName_Text,
-            ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 5.0),
-              child: speakerDescription_Text,
-            )
-          ],
-        ),
-      ),
-    );
-
-    final location_Text = Row(
-      children: <Widget>[
-        Icon(
-          Icons.location_on,
-          color: Colors.black54,
-        ),
-        Padding(
-          padding: EdgeInsets.only(left: 10.0),
-          child: Text(speakerLocation, 
-          style: TextStyle(
-            color: Colors.black54,
-            fontSize: 16.0
-          ),
-          )
-        )
-      ],
-    );
-
-    final linkedin_Inkwell = InkWell(
-      onTap: (){
-        //Open Linkedin App
-      },
-      child: Row(
-      children: <Widget>[
-        Container(
-              margin: EdgeInsets.only(left: 4.0),
-              width: 20.0,
-              height: 20.0,
-              decoration: BoxDecoration(
-               image: DecorationImage(
-                 image: NetworkImage(linkedinLogo) 
-               )
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(bottom: margin_xs),
+                child: speakerPhoto_Container(speakerModel),
               ),
-            ),
-        Padding(
-          padding: EdgeInsets.only(left: 10.0),
-          child: Text(linkedinApp, 
-          style: TextStyle(
-            color: Colors.black54,
-            fontSize: 16.0
-          ),
-          )
-        )
-      ],
-    )
-    );
-
-    final twitter_Inkwell = InkWell(
-      onTap: (){
-        //Open Twitter App
-      },
-      child: Row(
-      children: <Widget>[
-        Container(
-              margin: EdgeInsets.only(left: 4.0),
-              width: 20.0,
-              height: 20.0,
-              decoration: BoxDecoration(
-               image: DecorationImage(
-                 image: NetworkImage(twitterLogo) 
-               )
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: margin_xs),
+                  child: speakerName_Text(speakerModel),
+                ),
               ),
-            ),
-        Padding(
-          padding: EdgeInsets.only(left: 10.0),
-          child: Text(twitterApp, 
-          style: TextStyle(
-            color: Colors.black54,
-            fontSize: 16.0
+              Expanded(
+                  child: speakerDescription_Text(speakerModel),
+              )
+            ],
           ),
-          )
-        )
-      ],
-    )
-    );
+      );
+    } 
 
-    final informationContainer = Container(
-      height: 150.0,
-      width: 360.0,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: new Border .all(
-          color: Color(dividerColor),
-          width: 1.5
-        ),
-        borderRadius: BorderRadius.all(Radius.circular(8.0))
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-        child: Column(
+    Widget location_Text (SpeakerModel speakerModel){
+        return Row(
         children: <Widget>[
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text("Información",
-            style: TextStyle(
-             color: Color(primaryColor),
-             fontSize: 20.0,
-             fontWeight: FontWeight.bold
-           ),),
+          Icon(
+            Icons.location_on,
+            color: Colors.black54,
           ),
           Padding(
-            padding: EdgeInsets.only(top: 8.0),
-            child: location_Text,
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 8.0),
-            child: linkedin_Inkwell,
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 8.0),
-            child: twitter_Inkwell,
-          )
-        ],
-      ),
-      )
-    );
-
-    final about_Text = Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Icon(
-          Icons.info_outline,
-          color: Colors.black54,
-          ),
-        Flexible(
-          child: Padding(
-            padding: EdgeInsets.only(left: 20.0),
-            child: Text(
-            speakerAbout,
+            padding: EdgeInsets.only(left: 10.0),
+            child: Text(speakerModel.countyName, 
             style: TextStyle(
               color: Colors.black54,
-              fontSize: 16.0,
-              fontWeight: FontWeight.normal
+              fontSize: 16.0
+            ),
+            )
+          )
+        ],
+      );
+    } 
+
+    Widget linkedin_Inkwell (SpeakerModel speakerModel){
+      return InkWell(
+        onTap: (){
+          _launchURL(speakerModel.linkedinPath);
+        },
+        child: Row(
+        children: <Widget>[
+          Icon(
+            Icons.link,
+            color: Colors.black54,
+          ),
+         Expanded(
+           child: Container(
+               margin: EdgeInsets.only(left: 10.0),
+               child: Text(
+               speakerModel.linkedinPath,
+               overflow: TextOverflow.ellipsis,
+               style: TextStyle(
+                   color: Colors.black54,
+                   fontSize: 16.0
+               ),
+             )
+           ),
+         )
+        ],
+       )
+     );
+    } 
+
+    Widget twitter_Inkwell (SpeakerModel speakerModel){
+      return speakerModel.twitterUSer != null ? InkWell(
+      onTap: (){
+        _launchURL('https://twitter.com/'+speakerModel.twitterUSer);
+      },
+      child: Row(
+      children: <Widget>[
+        Container(
+              margin: EdgeInsets.only(left: 4.0),
+              width: 20.0,
+              height: 20.0,
+              decoration: BoxDecoration(
+               image: DecorationImage(
+                 image: AssetImage("assets/img/twitter.png")
+               )
               ),
             ),
-          )
-        )  
-      ],
-    );
-
-    final aboutContainer = Container(
-      height: 280.0,
-      width: 360.0,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: new Border .all(
-          color: Color(dividerColor),
-          width: 1.5
-        ),
-        borderRadius: BorderRadius.all(Radius.circular(8.0))
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-        child: Column(
-        children: <Widget>[
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text("About",
+        Padding(
+          padding: EdgeInsets.only(left: 10.0),
+          child: Text(
+            speakerModel.twitterUSer,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
-             color: Color(primaryColor),
-             fontSize: 20.0,
-             fontWeight: FontWeight.bold
-           ),),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 8.0),
-            child: about_Text,
-          ) 
-        ],
-      ),
+              color: Colors.black54,
+              fontSize: 16.0
+            ),
+          )
+        )
+      ],
       )
-    );
+     ): Container();
+    }
+
+    Widget informationContainer (SpeakerModel speakerModel){
+      return Transform.translate(
+        offset: Offset(0,-margin_xl),
+        child: Container(
+            margin: EdgeInsets.only(left: margin_m, right: margin_m),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                border: new Border .all(
+                    color: Theme.of(context).dividerColor,
+                    width: 1.0
+                ),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                      color: Colors.black38,
+                      blurRadius: 10.0,
+                      offset: Offset(0.0, 7.0)
+                  )
+                ],
+                borderRadius: BorderRadius.all(Radius.circular(8.0))
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: margin_m, vertical: margin_m),
+              child: Column(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Información",
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: letter_xm,
+                          fontWeight: FontWeight.bold
+                      ),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: location_Text(speakerModel),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: twitter_Inkwell(speakerModel),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: linkedin_Inkwell(speakerModel),
+                  ),
+                ],
+              ),
+            )
+        ),
+      );
+    } 
+
+    Widget about_Text (SpeakerModel speakerModel){
+       return Row(
+       crossAxisAlignment: CrossAxisAlignment.start,
+       children: <Widget>[
+         Icon(
+           Icons.info_outline,
+           color: Colors.black54,
+           ),
+         Flexible(
+           child: Padding(
+             padding: EdgeInsets.only(left: 20.0),
+             child: Text(
+             speakerModel.about,
+             style: TextStyle(
+               color: Colors.black54,
+               fontSize: 16.0,
+               fontWeight: FontWeight.normal
+               ),
+             ),
+           )
+         )  
+       ],
+      );
+    } 
+
+    Widget aboutContainer (SpeakerModel speakerModel){
+      return Transform.translate(
+        offset: Offset(0, -margin_m),
+        child: Container(
+            margin: EdgeInsets.only(left: margin_m, right: margin_m, bottom: margin_m),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                    color: Colors.black38,
+                    blurRadius: 10.0,
+                    offset: Offset(0.0, 7.0)
+                )
+              ],
+              border: new Border .all(
+                  color: Theme.of(context).dividerColor,
+                  width: 1.0
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: margin_m, vertical: margin_m),
+              child: Column(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("About",
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: letter_xm,
+                          fontWeight: FontWeight.bold
+                      ),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: about_Text(speakerModel),
+                  )
+                ],
+              ),
+            )
+        ),
+      );
+    } 
 
     final arrowAppbar = InkWell(
+      onTap: (){
+        Navigator.pop(context);
+      },
       child: Icon(
         Icons.arrow_back,
         color: Colors.white, 
       )
     );
 
-    return MaterialApp(
-      home: Scaffold(
-        body: Stack(
-          children: <Widget>[
-            Container(
-              color: Colors.transparent,
-              width: double.infinity,
-              height: double.infinity,
+  return FutureBuilder<SpeakerModel>(
+    future: DBProvider.db.getSpeakerId(speakerId),
+    builder: (BuildContext context, AsyncSnapshot<SpeakerModel> snapshot){
+
+      if(!snapshot.hasData){
+        return Center(child: CircularProgressIndicator());
+      }
+
+      SpeakerModel speaker = snapshot.data;
+
+        return Scaffold(
+          body: Stack(
+              children: <Widget>[
+                ListView(
+                  children: <Widget>[
+                    speakersAppBar(speaker),
+                    informationContainer(speaker),
+                    aboutContainer(speaker),
+                  ],
+                ),
+                Positioned(
+                  top: 40.0,
+                  left: margin_m,
+                  child: InkWell(
+                    onTap: (){Navigator.pop(context);},
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+              ],
             ),
-            speakersAppBar,
-            Positioned(
-              top: 35.0,
-              left: 20.0,
-              child: arrowAppbar,
-            ),
-            Positioned(
-              bottom: 310.0,
-              left: 25.0,
-              child: informationContainer,
-            ),
-            Positioned(
-              bottom: 20.0,
-              left: 25.0,
-              child: aboutContainer,
-            )
-          ],
-        ),
-      ),
-    );
+          );
+    });
   }
 }
+
+

@@ -5,7 +5,7 @@ SessionModel sessionModelFromJson(String str) => SessionModel.fromJson(json.deco
 String sessionModelToJson(SessionModel data) => json.encode(data.toJson());
 
 class SessionModel {
-  int id;
+  int id_session;
   String title;
   String description;
   String date;
@@ -13,7 +13,7 @@ class SessionModel {
   String type;
 
   SessionModel({
-    this.id,
+    this.id_session,
     this.title,
     this.description,
     this.date,
@@ -22,7 +22,7 @@ class SessionModel {
   });
 
   factory SessionModel.fromJson(Map<String, dynamic> json) => new SessionModel(
-    id: json["id"],
+    id_session: json["﻿id_session"],
     title: json["title"],
     description: json["description"],
     date: json["date"],
@@ -31,7 +31,7 @@ class SessionModel {
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
+    "id_session": id_session,
     "title": title,
     "description": description,
     "date": date,
