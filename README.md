@@ -1,9 +1,9 @@
-# io_extended_gdglapaz
+# IO Extended GDG La Paz
 
-Th
+
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-##
+![](io_extended_agenda.gif)
