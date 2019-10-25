@@ -3,6 +3,7 @@ import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 import 'package:io_extended_gdglapaz/models/speakerModel.dart';
 import 'package:io_extended_gdglapaz/providers/db_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart';
 
 class SpeakerDetailScreen extends StatelessWidget {
   @override
@@ -10,7 +11,6 @@ class SpeakerDetailScreen extends StatelessWidget {
    int speakerId;
 
   String linkedinLogo = "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png";
-  String twitterLogo = "http://pngimg.com/uploads/twitter/twitter_PNG32.png";
 
   SpeakerDetailScreen(this.speakerId);
 
@@ -23,6 +23,9 @@ class SpeakerDetailScreen extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: Theme.of(context).primaryColorDark, //or set color with: Color(0xFF0000FF)
+    ));
 
     Widget speakerPhoto_Container (SpeakerModel speakerModel){
       return Container(
@@ -59,10 +62,11 @@ class SpeakerDetailScreen extends StatelessWidget {
     Widget speakersAppBar (SpeakerModel speakerModel) {
         return Container(
         color: Theme.of(context).primaryColor,
-        height: 250.0,
+        height: 310.0,
         width: double.infinity,
+        padding: EdgeInsets.only(top: 55.0),
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
@@ -307,17 +311,29 @@ class SpeakerDetailScreen extends StatelessWidget {
       SpeakerModel speaker = snapshot.data;
 
         return Scaffold(
-          appBar: AppBar(
-            elevation: 0.0,
-          ),
-          body: ListView(
-            children: <Widget>[
-              speakersAppBar(speaker),
-              informationContainer(speaker),
-              aboutContainer(speaker),
-           ],
-          ),
-        );
+          body: Stack(
+              children: <Widget>[
+                ListView(
+                  children: <Widget>[
+                    speakersAppBar(speaker),
+                    informationContainer(speaker),
+                    aboutContainer(speaker),
+                  ],
+                ),
+                Positioned(
+                  top: 40.0,
+                  left: margin_m,
+                  child: InkWell(
+                    onTap: (){Navigator.pop(context);},
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          );
     });
   }
 }
