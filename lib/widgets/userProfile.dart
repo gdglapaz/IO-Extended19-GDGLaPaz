@@ -6,11 +6,11 @@ import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 class UserProfile extends StatelessWidget {
 
   UserPreferences prefs = UserPreferences();
-  double sizeAvatar = 50.0;
+  double sizeAvatar = 40.0;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(margin_xs),
+      padding: EdgeInsets.all(margin_s),
       child: ClipOval(
         child: CachedNetworkImage(
           imageUrl:  prefs.photoUrl,
