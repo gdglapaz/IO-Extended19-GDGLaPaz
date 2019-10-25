@@ -11,6 +11,7 @@ class SpeakerDetailScreen extends StatelessWidget {
    int speakerId;
 
   String linkedinLogo = "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png";
+  String twitterLogo = "http://pngimg.com/uploads/twitter/twitter_PNG32.png";
 
   SpeakerDetailScreen(this.speakerId);
 
@@ -62,11 +63,11 @@ class SpeakerDetailScreen extends StatelessWidget {
     Widget speakersAppBar (SpeakerModel speakerModel) {
         return Container(
         color: Theme.of(context).primaryColor,
-        height: 310.0,
+        height: 250.0,
         width: double.infinity,
         padding: EdgeInsets.only(top: 55.0),
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
@@ -311,29 +312,17 @@ class SpeakerDetailScreen extends StatelessWidget {
       SpeakerModel speaker = snapshot.data;
 
         return Scaffold(
-          body: Stack(
-              children: <Widget>[
-                ListView(
-                  children: <Widget>[
-                    speakersAppBar(speaker),
-                    informationContainer(speaker),
-                    aboutContainer(speaker),
-                  ],
-                ),
-                Positioned(
-                  top: 40.0,
-                  left: margin_m,
-                  child: InkWell(
-                    onTap: (){Navigator.pop(context);},
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          );
+          appBar: AppBar(
+            elevation: 0.0,
+          ),
+          body: ListView(
+            children: <Widget>[
+              speakersAppBar(speaker),
+              informationContainer(speaker),
+              aboutContainer(speaker),
+            ],
+          ),
+        );
     });
   }
 }

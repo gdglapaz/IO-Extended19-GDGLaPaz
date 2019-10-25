@@ -6,8 +6,8 @@ import 'package:io_extended_gdglapaz/screens/speakers/speakersScreen.dart';
 import 'package:io_extended_gdglapaz/util/ui_utils.dart';
 
 void main() async{
-  /**final prefs = UserPreferences();
-  await prefs.initPreferences();*/
+  final prefs = UserPreferences();
+  await prefs.initPreferences();
 
   runApp(MyApp());
 }

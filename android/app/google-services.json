@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "349339141583-qnsrgn8noq8vedofmf203jkslrvfqppq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.gdglapaz.io_extended_gdglapaz",
+            "certificate_hash": "196abd4d3c485572c4fbe619e9707ffcc269b8cb"
+          }
+        },
+        {
           "client_id": "349339141583-8f8bp572dtjl7vpnd0pt9honu2ou6a7b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -38,6 +46,13 @@
             {
               "client_id": "349339141583-k2ruif04e1s7iqemj10k3u84pv14s9t1.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "349339141583-82u01rqpc0mp02l01qs692nc20o95boi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grindhood.grindhoodApp"
+              }
             }
           ]
         }
