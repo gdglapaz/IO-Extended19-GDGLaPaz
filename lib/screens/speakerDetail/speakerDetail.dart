@@ -27,14 +27,34 @@ class SpeakerDetailScreen extends StatelessWidget {
       statusBarColor: Theme.of(context).primaryColorDark, //or set color with: Color(0xFF0000FF)
     ));
 
+    Widget gdeIcon () {
+      return Container(
+              width: 45.0,
+              height: 45.0,
+              margin: EdgeInsets.all(2.0),
+              child: CircleAvatar(
+                backgroundImage: AssetImage("assets/img/gdelogo.jpeg"),
+              ),
+            );
+    }
+
     Widget speakerPhoto_Container (SpeakerModel speakerModel){
       return Container(
               width: 130.0,
               height: 130.0,
               margin: EdgeInsets.all(2.0),
-              child: CircleAvatar(
-                backgroundImage: AssetImage(speakerModel.pathImage),
-              ),
+              child: Stack(
+                children: <Widget>[
+                  Center(
+                    child: CircleAvatar(
+                      radius: 60.0,
+                      backgroundImage: AssetImage(speakerModel.pathImage),
+                    ),
+                  ),
+                  speakerModel.isExpert == 1 ? 
+                  Positioned(right: 0.0, child: gdeIcon()) : Container()
+                ],
+              )
             );
     }
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:io_extended_gdglapaz/screens/aboutUs/aboutus.dart';
 import 'package:io_extended_gdglapaz/screens/home/home.dart';
+import 'package:io_extended_gdglapaz/screens/points/pointsScreen.dart';
+import 'package:io_extended_gdglapaz/screens/sponsors/sponsorsScreen.dart';
 import 'package:io_extended_gdglapaz/shared_preferences/user_preferences.dart';
 import 'package:io_extended_gdglapaz/screens/speakers/speakersScreen.dart';
 import 'package:io_extended_gdglapaz/util/ui_utils.dart';
@@ -23,7 +25,8 @@ class MyApp extends StatelessWidget {
         'home': (BuildContext context) => HomeScreen(),
         'about-us': (BuildContext context) => AboutUsScreen(),
         'speakers': (BuildContext context) => SpeakersScreen(),
-
+        'sponsors': (BuildContext context) => SponsorsScreen(),
+        'points'  : (BuildContext context) => PointsScreen()
       },
       theme: ThemeData(
         primaryColor: Color(0xFF8500CC),
