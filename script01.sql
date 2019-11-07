@@ -160,7 +160,7 @@ INSERT INTO Session_Category (id_session, id_category) VALUES (10, 15);
 INSERT INTO Session_Category (id_session, id_category) VALUES (11, 17);
 -- INSERT INTO Session_Category (id_session, id_category) VALUES (12, 4);
 INSERT INTO Session_Category (id_session, id_category) VALUES (13, 4);
-INSERT INTO Session_Category (id_session, id_category) VALUES (14, 11);
+INSERT INTO Session_Category (id_session, id_category) VALUES (14, 11);  
 INSERT INTO Session_Category (id_session, id_category) VALUES (15, 12);
 INSERT INTO Session_Category (id_session, id_category) VALUES (16, 7);
 -- INSERT INTO Session_Category (id_session, id_category) VALUES (17, 19);
