@@ -20,6 +20,7 @@ class AboutUsScreen extends StatelessWidget {
                     width: 200.0,
                     child:  Image.asset ('assets/img/gdglapaz_square.png'),
                   ),
+                  SizedBox(height: 12.0,),
                   Container(
                     margin: EdgeInsets.all(margin_m),
                     child: Text(
