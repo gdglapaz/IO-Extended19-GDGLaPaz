@@ -70,7 +70,7 @@ class PointsScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Text(
-              "Tu puntaje es: PUNTOS",
+              "Tu puntaje es:",
               style:
               TextStyle(
                 color: Colors.black54,
@@ -78,6 +78,8 @@ class PointsScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold 
               )    ,
             ),
+            SizedBox(height: 20.0,),
+            coinScore(),
             SizedBox(height: 20.0,),
             InkWell(
               child: Container(
@@ -97,10 +99,23 @@ class PointsScreen extends StatelessWidget {
     );
   }
 
+  Widget coinScore() {
+    return Container(
+      height: 150.0,
+      width: 150.0,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/img/coin.png')
+        )
+      ),
+      child: Center(child: Text("50 puntos", style: TextStyle(color: Colors.white, fontSize: letter_md, fontWeight: FontWeight.bold)))
+    );
+  }
+
   Widget prizesList() {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Wrap(
+        verticalDirection: VerticalDirection.down,
         children: <Widget>[
           prizeCard("assets/img/prizes/stkCloud.png", "Sticker Cloud", "? Puntos"),
           prizeCard("assets/img/prizes/stkDash.png", "Sticker Dash", "? Puntos"),
@@ -117,7 +132,9 @@ class PointsScreen extends StatelessWidget {
 
   Widget prizeCard(String prizeImage, String prizeName, String pointsToGet) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10.0),
+      width: 140.0,
+      height: 200.0,
+      margin: EdgeInsets.only(bottom: 10.0, right: 5.0),
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey, style: BorderStyle.solid, width: 2.0),
@@ -133,7 +150,7 @@ class PointsScreen extends StatelessWidget {
             // color: Colors.blue,
           ),
           SizedBox(height: 5.0),
-          Text(prizeName, style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 20.0),),
+          Text(prizeName, style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 20.0),textAlign: TextAlign.center,),
           SizedBox(height: 2.0),
           Text(pointsToGet, style: TextStyle(fontWeight: FontWeight.normal, fontSize: 14.0),),
         ],
