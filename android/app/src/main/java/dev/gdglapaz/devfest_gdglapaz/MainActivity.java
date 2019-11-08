@@ -1,4 +1,4 @@
-package dev.gdglapaz.io_extended_gdglapaz;
+package dev.gdglapaz.devfest_gdglapaz;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
