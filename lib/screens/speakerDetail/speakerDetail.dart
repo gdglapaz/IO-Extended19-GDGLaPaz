@@ -11,7 +11,6 @@ class SpeakerDetailScreen extends StatelessWidget {
    int speakerId;
 
   String linkedinLogo = "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png";
-  String twitterLogo = "http://pngimg.com/uploads/twitter/twitter_PNG32.png";
 
   SpeakerDetailScreen(this.speakerId);
 
@@ -28,14 +27,34 @@ class SpeakerDetailScreen extends StatelessWidget {
       statusBarColor: Theme.of(context).primaryColorDark, //or set color with: Color(0xFF0000FF)
     ));
 
+    Widget gdeIcon () {
+      return Container(
+              width: 45.0,
+              height: 45.0,
+              margin: EdgeInsets.all(2.0),
+              child: CircleAvatar(
+                backgroundImage: AssetImage("assets/img/gdelogo.jpeg"),
+              ),
+            );
+    }
+
     Widget speakerPhoto_Container (SpeakerModel speakerModel){
       return Container(
               width: 130.0,
               height: 130.0,
               margin: EdgeInsets.all(2.0),
-              child: CircleAvatar(
-                backgroundImage: AssetImage(speakerModel.pathImage),
-              ),
+              child: Stack(
+                children: <Widget>[
+                  Center(
+                    child: CircleAvatar(
+                      radius: 60.0,
+                      backgroundImage: AssetImage(speakerModel.pathImage),
+                    ),
+                  ),
+                  speakerModel.isExpert == 1 ? 
+                  Positioned(right: 0.0, child: gdeIcon()) : Container()
+                ],
+              )
             );
     }
 
@@ -63,11 +82,11 @@ class SpeakerDetailScreen extends StatelessWidget {
     Widget speakersAppBar (SpeakerModel speakerModel) {
         return Container(
         color: Theme.of(context).primaryColor,
-        height: 250.0,
+        height: 310.0,
         width: double.infinity,
         padding: EdgeInsets.only(top: 55.0),
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
@@ -312,17 +331,29 @@ class SpeakerDetailScreen extends StatelessWidget {
       SpeakerModel speaker = snapshot.data;
 
         return Scaffold(
-          appBar: AppBar(
-            elevation: 0.0,
-          ),
-          body: ListView(
-            children: <Widget>[
-              speakersAppBar(speaker),
-              informationContainer(speaker),
-              aboutContainer(speaker),
-            ],
-          ),
-        );
+          body: Stack(
+              children: <Widget>[
+                ListView(
+                  children: <Widget>[
+                    speakersAppBar(speaker),
+                    informationContainer(speaker),
+                    aboutContainer(speaker),
+                  ],
+                ),
+                Positioned(
+                  top: 40.0,
+                  left: margin_m,
+                  child: InkWell(
+                    onTap: (){Navigator.pop(context);},
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          );
     });
   }
 }

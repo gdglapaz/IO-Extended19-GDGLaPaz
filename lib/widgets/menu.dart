@@ -9,7 +9,7 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  final prefs = UserPreferences();
+
   Drawer getDrawer(BuildContext context){
     
     ListTile getItem(Icon icon, String description, String route){
@@ -17,7 +17,7 @@ class _MenuState extends State<Menu> {
          leading: icon,
          title: new Text(description),
          onTap: (){
-           Navigator.pushReplacementNamed(context, route);
+           Navigator.pushNamed(context, route);
          },
       );
     }
@@ -25,11 +25,6 @@ class _MenuState extends State<Menu> {
     ListView listView= new ListView(
       padding: EdgeInsets.zero,
       children:  <Widget>[
-        prefs.uid != null ? UserAccountsDrawerHeader(
-            accountName: new Text(prefs.displayName,textAlign: TextAlign.center),
-            accountEmail: new Text(prefs.email,textAlign: TextAlign.center),
-            currentAccountPicture: UserProfile()
-        ) :
         DrawerHeader(
           child: Container(
             padding: EdgeInsets.all(margin_m),
@@ -41,9 +36,9 @@ class _MenuState extends State<Menu> {
         ),
         getItem(new Icon(Icons.home), 'Home', "home"),
         getItem(new Icon(Icons.record_voice_over), 'Speakers', "speakers"),
-        getItem(new Icon(Icons.location_on), 'Location', "home"),
-        getItem(new Icon(Icons.forum), 'Forum', "home"),
-        getItem(new Icon(Icons.people), 'About Us', "about-us"),
+        getItem(new Icon(Icons.people), 'Sponsors', "sponsors"),
+        getItem(new Icon(Icons.info_outline), 'About Us', "about-us"),
+        getItem(new Icon(Icons.insert_emoticon), 'Puntos GDG', "points"),
       ]
     );
 
