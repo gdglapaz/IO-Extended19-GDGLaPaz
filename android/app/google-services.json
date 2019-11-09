@@ -1,71 +1,42 @@
 {
   "project_info": {
-    "project_number": "1006279487348",
-    "firebase_url": "https://devfest-tickets.firebaseio.com",
-    "project_id": "devfest-tickets",
-    "storage_bucket": "devfest-tickets.appspot.com"
+    "project_number": "349339141583",
+    "firebase_url": "https://io-extended2019-gdglapaz.firebaseio.com",
+    "project_id": "io-extended2019-gdglapaz",
+    "storage_bucket": "io-extended2019-gdglapaz.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1006279487348:android:08c2dede6847e347adc621",
+        "mobilesdk_app_id": "1:349339141583:android:2743725ff213ae7f",
         "android_client_info": {
-          "package_name": "com.example.control_eventos_qr"
+          "package_name": "dev.gdglapaz.io_extended_gdglapaz"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1006279487348-0jlf98mbmtjfdckdb3cdfikg5vi42chp.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAJH6fvarNk5RnW6kdFlAKdbeSy82IXzvk"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1006279487348-0jlf98mbmtjfdckdb3cdfikg5vi42chp.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:1006279487348:android:54c28d4d8e06d5a0adc621",
-        "android_client_info": {
-          "package_name": "dev.gdglapaz.devfest_gdglapaz"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "1006279487348-5g5h5e2srtfjk10pq8ffscrr46bhdmuc.apps.googleusercontent.com",
+          "client_id": "349339141583-8f8bp572dtjl7vpnd0pt9honu2ou6a7b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "dev.gdglapaz.devfest_gdglapaz",
+            "package_name": "dev.gdglapaz.io_extended_gdglapaz",
             "certificate_hash": "1692f967c1824cc85a7516850ae4da1d76ccba77"
           }
         },
         {
-          "client_id": "1006279487348-0jlf98mbmtjfdckdb3cdfikg5vi42chp.apps.googleusercontent.com",
+          "client_id": "349339141583-k2ruif04e1s7iqemj10k3u84pv14s9t1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAJH6fvarNk5RnW6kdFlAKdbeSy82IXzvk"
+          "current_key": "AIzaSyB1MMKKvESR2JLcMA3MZUl8vzZubdyQaOY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1006279487348-0jlf98mbmtjfdckdb3cdfikg5vi42chp.apps.googleusercontent.com",
+              "client_id": "349339141583-k2ruif04e1s7iqemj10k3u84pv14s9t1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

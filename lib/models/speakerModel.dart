@@ -9,8 +9,9 @@ class SpeakerModel {
   final String twitterUSer;
   final String linkedinPath;
   final String about;
+  final int isExpert;
 
-  SpeakerModel({this.id_speaker, this.pathImage, this.firstName, this.lastName, this.jobTitle, this.countyName, this.twitterUSer, this.linkedinPath, this.about});
+  SpeakerModel({this.id_speaker, this.pathImage, this.firstName, this.lastName, this.jobTitle, this.countyName, this.twitterUSer, this.linkedinPath, this.about, this.isExpert});
 
   factory SpeakerModel.fromJson(Map<String, dynamic> json) => new SpeakerModel(
     id_speaker: json["id_speaker"],
@@ -22,6 +23,7 @@ class SpeakerModel {
     twitterUSer: json["twitterUSer"],
     linkedinPath: json["linkedinPath"],
     about: json["about"],
+    isExpert: json["isExpert"]
   );
 
   Map<String, dynamic> toJson() => {
@@ -34,5 +36,6 @@ class SpeakerModel {
     "twitterUSer": twitterUSer,
     "linkedinPath": linkedinPath,
     "about": about,
+    "isExpert" : isExpert
   };
 }

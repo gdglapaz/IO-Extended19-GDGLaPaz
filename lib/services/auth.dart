@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+/**import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:io_extended_gdglapaz/shared_preferences/user_preferences.dart';
 
@@ -27,4 +27,4 @@ class AuthService {
   }
 }
 
-final AuthService authService = AuthService();
+final AuthService authService = AuthService();*/
