@@ -15,19 +15,7 @@ class PointsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              instructions(),
-              SizedBox(height: 20.0),
-              Text(
-                "Tu puntaje:",
-                 style:
-                 TextStyle(
-                   color: Theme.of(context).primaryColor,
-                   fontSize: letter_md,
-                   fontWeight: FontWeight.bold 
-                 )    
-              ),     
-              SizedBox(height: 10.0,),
-              Center(child: coinScore(),),
+              instructions(),     
               SizedBox(height: 10.0,),
               Text(
                 "Premios!:",
