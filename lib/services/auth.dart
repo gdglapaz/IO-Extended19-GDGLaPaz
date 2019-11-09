@@ -16,9 +16,9 @@ class AuthService {
       idToken: googleAuth.idToken,
     );
 
-    final FirebaseUser user = await _auth.signInWithCredential(credential);
-    prefs.updateUser(user);
-    return user;
+    final AuthResult user = await _auth.signInWithCredential(credential);
+    prefs.updateUser(user.user);
+    return user.user;
   }
 
   void signOut(){
