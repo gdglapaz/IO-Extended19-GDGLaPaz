@@ -13,31 +13,34 @@ class _CodelabsScreenState extends State<CodelabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Map>>(
-        future: DBProvider.db.getCodelabs(),
-        builder: (BuildContext context, AsyncSnapshot<List<Map>> snapshot){
-          if(!snapshot.hasData){
-            return Center(child: CircularProgressIndicator(),);
-          }
-
-          final sessions = snapshot.data;
-
-          List<TimelineModel> itemsSessions = [];
-
-          for (Map<String, dynamic> data in sessions) {
-            itemsSessions.add(
-                TimelineModel(
-                  SessionItem(data['id_session'], data['time'], data['pathImage'], data['firstName'] + ' ' +data['lastName'], data['title'], data['hasDetails']),
-                  position: TimelineItemPosition.left,
-                  iconBackground: Colors.lightGreenAccent,
-                )
-            );
-          }
-
-          return Container(
-            child: Timeline(children: itemsSessions, lineColor: Colors.black54, lineWidth: 1.0, position: TimelinePosition.Left),
-          );
-        }
+    // return FutureBuilder<List<Map>>(
+        // future: DBProvider.db.getCodelabs(),
+        // builder: (BuildContext context, AsyncSnapshot<List<Map>> snapshot){
+          // if(!snapshot.hasData){
+            // return Center(child: CircularProgressIndicator(),);
+          // }
+// 
+          // final sessions = snapshot.data;
+// 
+          // List<TimelineModel> itemsSessions = [];
+// 
+          // for (Map<String, dynamic> data in sessions) {
+            // itemsSessions.add(
+                // TimelineModel(
+                  // SessionItem(data['id_session'], data['time'], data['pathImage'], data['firstName'] + ' ' +data['lastName'], data['title'], data['hasDetails']),
+                  // position: TimelineItemPosition.left,
+                  // iconBackground: Colors.lightGreenAccent,
+                // )
+            // );
+          // }
+// 
+          // return Container(
+            // child: Timeline(children: itemsSessions, lineColor: Colors.black54, lineWidth: 1.0, position: TimelinePosition.Left),
+          // );
+        // }
+    // );
+    return Center(
+      child: Text("No tenemos codelabs para el dia de hoy!"),
     );
   }
 }

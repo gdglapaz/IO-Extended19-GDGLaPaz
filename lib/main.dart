@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'I/O Extended',
+      title: 'Devfest 19',
       initialRoute: 'home',
       routes: {
         'home': (BuildContext context) => HomeScreen(),

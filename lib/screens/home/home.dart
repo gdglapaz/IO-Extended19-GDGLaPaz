@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        title: Text("I/O Extended"),
+        title: Text("DevFest19"),
       ),
       body: _callPage(currentIndex),
       bottomNavigationBar: _createBottomNavigationBar(),

@@ -26,7 +26,9 @@ class PointsScreen extends StatelessWidget {
                    fontWeight: FontWeight.bold 
                  )    
               ),     
-              scoreSection(context),
+              SizedBox(height: 10.0,),
+              Center(child: coinScore(),),
+              SizedBox(height: 10.0,),
               Text(
                 "Premios!:",
                  style:
@@ -37,7 +39,12 @@ class PointsScreen extends StatelessWidget {
                  )    
               ),
               SizedBox(height: 20.0,),
-              prizesList() 
+              prizesList(),
+              SizedBox(height: 20.0,),
+              Text(
+                "El valor de la Libreta es de 20 puntos y el del cuaderno es de 30 puntos",
+                style: TextStyle(fontSize: letter_md, color: Colors.black54),
+              ),
             ],
           ),
         ),
@@ -53,10 +60,6 @@ class PointsScreen extends StatelessWidget {
           style: TextStyle(fontSize: letter_md, color: Colors.black54),
         ),
         SizedBox(height: 10.0,),
-        Text(
-          "Para ver cuantos puntos obtuviste escanea tu código QR con nuestro lector.",
-          style: TextStyle(fontSize: letter_md, color: Colors.black54),
-        )
       ],
     );
   }
@@ -117,14 +120,14 @@ class PointsScreen extends StatelessWidget {
       child: Wrap(
         verticalDirection: VerticalDirection.down,
         children: <Widget>[
-          prizeCard("assets/img/prizes/stkCloud.png", "Sticker Cloud", "? Puntos"),
-          prizeCard("assets/img/prizes/stkDash.png", "Sticker Dash", "? Puntos"),
-          prizeCard("assets/img/prizes/stkTensorflow.png", "Sticker TensorFlow", "? Puntos"),
-          prizeCard("assets/img/prizes/stkDino.png", "Sticker Dino", "? Puntos"),
-          prizeCard("assets/img/prizes/stkAngular.png", "Sticker Angular", "? Puntos"), 
-          prizeCard("assets/img/prizes/stkFirebase.png", "Sticker Firebase", "? Puntos"),
-          prizeCard("assets/img/prizes/gorraTech.png", "Gorra Tech", "? Puntos"),
-          prizeCard("assets/img/prizes/polera.png", "Polera Devfest", "? Puntos"),
+          prizeCard("assets/img/prizes/stkCloud.png", "Sticker Cloud", "8 Puntos"),
+          prizeCard("assets/img/prizes/stkDash.png", "Sticker Dash", "8 Puntos"),
+          prizeCard("assets/img/prizes/stkTensorflow.png", "Sticker TensorFlow", "8 Puntos"),
+          prizeCard("assets/img/prizes/stkDino.png", "Sticker Dino", "8 Puntos"),
+          prizeCard("assets/img/prizes/stkAngular.png", "Sticker Angular", "8 Puntos"), 
+          prizeCard("assets/img/prizes/stkFirebase.png", "Sticker Firebase", "8 Puntos"),
+          prizeCard("assets/img/prizes/gorraTech.png", "Gorra Tech", "25 Puntos"),
+          prizeCard("assets/img/prizes/polera.png", "Polera Devfest", "40 Puntos"),
         ],
       ),
     );
