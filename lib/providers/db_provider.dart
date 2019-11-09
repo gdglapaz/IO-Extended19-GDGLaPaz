@@ -29,7 +29,7 @@ class DBProvider {
 
   initDB() async {
     var databasesPath = await getDatabasesPath();
-    var path = join(databasesPath, "DEVFESTLP19.db");
+    var path = join(databasesPath, "DEVFEST.db");
 
     var exists = await databaseExists(path);
 
@@ -40,7 +40,7 @@ class DBProvider {
       } catch (_) {}
 
       // Copy from asset
-      ByteData data = await rootBundle.load(join("assets", "DEVFESTLP19.db"));
+      ByteData data = await rootBundle.load(join("assets", "DEVFEST.db"));
       List<int> bytes =
       data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 

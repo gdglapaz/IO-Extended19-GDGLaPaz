@@ -85,18 +85,19 @@ INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VA
 INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (2, 'Providing a 60 minutes App', 'Crearemos una aplicación con Flutter en tan solo 60 minutos, mostrando el potencial de esta tecnología', '08/11/2019', '16:30 - VIERNES', 'C',1);
 INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (3, 'Angular & Firebase', 'Se realizará un aplicación en Angular y veremos como manejar datos e información con Firebase', '08/11/2019', '16:30 - VIERNES', 'C',1);
 INSERT INTO Session (id_session,title,description,date,time,type, extraInfo, extraPathImage, extraTitle, hasDetails) VALUES (4, 'Keynote', 'Dentro de la comunidad GDG La Paz y WTM La Paz, se viene impulsando la utilización de múltiples tecnologías y aplicaciones que ofrece #Google, Para ello contamos con subgrupos que se dedican a aprender, experimentar y desarrollar productos con dichas Tecnologías como ser: #MobileTechnologies (Android, Flutter) #Web (Angular, PWA) #MachineLearning&AI (Tensorflow) #ActionsOnGoogle #GoogleCloud #GoogleDesign&DesignSprint #Firebase.', '01/06/2019', '9:00', 'T', 1, 'assets/img/gdglapaz_square.png', 'GDG La Paz',0);
-INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (5, 'AoG Adventures, more than hello world Agent', 'Hoy en día los agentes inteligentes y asistentes de voz son muy populares, les mostrare las distintas areas en las que trabajan mis chatbots desde procesamiento de imagenes hasta control de dispositivos fisicos', '09/11/2019', '9:00', 'T',1);
+-- INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (5, 'AoG Adventures, more than hello world Agent', 'Hoy en día los agentes inteligentes y asistentes de voz son muy populares, les mostrare las distintas areas en las que trabajan mis chatbots desde procesamiento de imagenes hasta control de dispositivos fisicos', '09/11/2019', '9:00', 'T',1);
 INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (6, 'Como hacer aplicaciones para un millon de usuarios (Backend Side)', 'Muchas veces las aplicaciones que construimos superan o igualan el millon de usuarios, hablaremos acerca de las caracteristicas que tienen que tener este tipo de aplicaciones pare tener la mejor calidad y confiabilidad', '08/11/2019', '9:30', 'T',1);
-INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (7, 'Lets Talk About Flutter State Management', 'En esta charla hablaré sobre algunas arquitecturas en Flutter, para luego mostrar una aplicación de ejemplo y cómo puede ser más complicado si no usamos un patrón apropiado. Finalmente, implementaré una arquitectura basada en el paquete Provider y, como si hiciera cambios mínimos en el código, podemos reducir la complejidad.','09/11/2019', '10:00', 'T',1);
+INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (7, 'Optimizando Flutter con Dart Spreads', 'Optimizar nuestra aplicación Flutter es muy importante para ella, por lo que veremos cómo lo podemos hacer mediante algunos tips y consejos con Dart.', '09/11/2019', '10:00', 'T',1);
 INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (8, 'Choosing Your Stack', 'Un año de trabajo arduo eligiendo el futuro de nuestra compañía nos ha dejado el legado de un stack sólido, en esta charla te contaré como tomamos cada decisión para crear un Frontend donde todo buen ingeniero quisiera trabajar.', '09/11/2019', '10:30', 'T',1);
 INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (9, "El poder de los APIs Web: Desarrollando una App guiada por voz", 'Google Home y Amazon Echo ¿Qué tienen en común? Estos dispositivos pueden ser usados para obtener respuestas a preguntas comunes como obtener la hora, el estado del clima o pedirles que ejecuten ciertas tareas. Tener una aplicación web guiada por voz no solo significa escuchar y obtener una respuesta vocal, sino que también puede usarse como una tecnología de asistencia. Con la ayuda de las Web APIs, podemos desarrollar aplicaciones modernas que no solo reconozcan lo que sus usuarios están diciendo, sino que también puedan responderles. Veremos una aplicación prototipo que utiliza Web APIs, patrones de diseño, TypeScript y Angular para aprender algunos conceptos básicos del reconocimiento y síntesis de voz.', '09/11/2019', '11:30', 'T',1);
 INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (10, 'Como proteger tu "Yo digital"', '', '09/11/2019', '11:30', 'T',0);
 INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (11, "Jalasoft Dev Bootcamp: 1st Year", '', '09/11/2019', '11:30', 'T',0);
 INSERT INTO Session (id_session,title,description,date,time,type, extraInfo, extraPathImage, extraTitle, hasDetails) VALUES (12, 'Feria Tecnologica - Lunch', 'Dentro de la comunidad GDG La Paz y WTM La Paz, se viene impulsando la utilización de múltiples tecnologías y aplicaciones que ofrece #Google, Para ello contamos con subgrupos que se dedican a aprender, experimentar y desarrollar productos con dichas Tecnologías como ser: #MobileTechnologies (Android, Flutter) #Web (Angular, PWA) #MachineLearning&AI (Tensorflow) #ActionsOnGoogle #GoogleCloud #GoogleDesign&DesignSprint #Firebase.', '09/11/2019', '16:00', 'T', 1, 'assets/img/gdglapaz_square.png', 'Cierre del Evento',0);
-INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (13, 'Google Cloud Platform', 'Realizaremos un proceso de despliegue completo de una aplicación, donde usaremos herramientas como Cloud Source Repositories, Cloud Run, Cloud Build y StackDriver.', '09/11/2019', '14:00', 'T',1);
+-- INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (13, 'Google Cloud Platform', 'Realizaremos un proceso de despliegue completo de una aplicación, donde usaremos herramientas como Cloud Source Repositories, Cloud Run, Cloud Build y StackDriver.', '09/11/2019', '14:00', 'T',1);
 INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (14, 'Developing Multiplatform with Kotlin : Why and How ', 'En pleno siglo XXI vivimos rodeados de dispositivos, y éstos viven de las aplicaciones de las que disponga su sistema operativo, muchas veces no es posible codificar una aplicación para cada plataforma existente, veremos por qué y cómo desarrollar aplicaciones multiplataforma con Kotlin', '09/11/2019', '14:30', 'T',1);
 INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (15, "SEO: Del Marketing al Data Science", 'El posicionamiento en buscadores es fundamental para realizar un buen marketing, mediante el Data Science podemos obtener mejores posicionamientos y así también mejorar nuestro Marketing', '09/11/2019', '15:00', 'T',1);
-INSERT INTO Session (id_session,title,description,date,time,type, hasDetails) VALUES (16, 'Optimizando Flutter con Dart Spreads', 'Optimizar nuestra aplicación Flutter es muy importante para ella, por lo que veremos cómo lo podemos hacer mediante algunos tips y consejos con Dart.', '09/11/2019', '15:30', 'T',1);
+INSERT INTO Session (id_session,title,description,date,time,type, hasDetails, extraInfo, extraPathImage, extraTitle, hasDetails) VALUES (16, 'Lets Talk About Flutter State Management', 'En esta charla hablaré sobre algunas arquitecturas en Flutter, para luego mostrar una aplicación de ejemplo y cómo puede ser más complicado si no usamos un patrón apropiado. Finalmente, implementaré una arquitectura basada en el paquete Provider y, como si hiciera cambios mínimos en el código, podemos reducir la complejidad.','09/11/2019', '15:30', 'T',1, 'assets/img/speakers/DiegoV.jpg', 'Diego Velasquez & Argel Bejarano', 'Lets Talk About Flutter State Management', 0);
+
 INSERT INTO Session (id_session,title,description,date,time,type, extraInfo, extraPathImage, extraTitle, hasDetails) VALUES (17, 'Entrega de Premios', 'Se realizará la entrega de premios de parte del GDG', '09/11/2019', '16:00', 'T', 1, 'assets/img/gdglapaz_square.png', 'Cierre del Evento',0);
 
 ---Session - Speaker
@@ -118,18 +119,18 @@ INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (1,11);
 INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (2,3);
 INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (3,3);
 -- INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (4,11); KEYNOTE
-INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (5,11);
+-- INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (5,11);
 INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (6,4);
-INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (7,9);
+INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (7,3);
 INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (8,8);
 INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (9,2);
 INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (10,13);
 INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (11,12);
 -- INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (12,11); FERIA
-INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (13,7);
+-- INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (13,7);
 INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (14,5);
 INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (15,1);
-INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (16,3);
+-- INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (7,9);
 -- INSERT INTO Session_Speaker (id_session, id_speaker) VALUES (17,11); ENTREGA DE PREMIOS
 
 ---Session - Categories
@@ -151,7 +152,7 @@ INSERT INTO Session_Category (id_session, id_category) VALUES (1, 3);
 INSERT INTO Session_Category (id_session, id_category) VALUES (2, 7);
 INSERT INTO Session_Category (id_session, id_category) VALUES (3, 2);
 INSERT INTO Session_Category (id_session, id_category) VALUES (4, 8);
-INSERT INTO Session_Category (id_session, id_category) VALUES (5, 3);
+-- INSERT INTO Session_Category (id_session, id_category) VALUES (5, 3);
 INSERT INTO Session_Category (id_session, id_category) VALUES (6, 20);
 INSERT INTO Session_Category (id_session, id_category) VALUES (7, 7);
 INSERT INTO Session_Category (id_session, id_category) VALUES (8, 16);
@@ -159,7 +160,7 @@ INSERT INTO Session_Category (id_session, id_category) VALUES (9, 16);
 INSERT INTO Session_Category (id_session, id_category) VALUES (10, 15);
 INSERT INTO Session_Category (id_session, id_category) VALUES (11, 17);
 INSERT INTO Session_Category (id_session, id_category) VALUES (12, 19);
-INSERT INTO Session_Category (id_session, id_category) VALUES (13, 4);
+-- INSERT INTO Session_Category (id_session, id_category) VALUES (13, 4);
 INSERT INTO Session_Category (id_session, id_category) VALUES (14, 11);  
 INSERT INTO Session_Category (id_session, id_category) VALUES (15, 12);
 INSERT INTO Session_Category (id_session, id_category) VALUES (16, 7);

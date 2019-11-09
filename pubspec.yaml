@@ -56,7 +56,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/DEVFESTLP19.db
+    - assets/DEVFEST.db
     - assets/img/io_ext_lapaz.png
     - assets/img/gdglapaz_square.png
     - assets/img/twitter.png
